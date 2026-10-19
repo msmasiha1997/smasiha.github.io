@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <title>Same Training Loss, Different Behavior: Which Solution Should We Choose? — Saeed Masiha</title>
+  <title>Same Training Loss, Different Behavior: Which Solution Should We Choose? | Saeed Masiha</title>
   <meta name="description" content="Many models share the same minimum training loss. See how a second criterion selects among them, and how this connects to LLM data reweighting.">
   <meta name="author" content="Saeed Masiha">
   <link rel="canonical" href="https://smasiha.github.io/writing/same-training-loss/">
@@ -471,7 +471,7 @@
                 </tbody></table>
               </div>
               <p>Each completed run uses a final 20,000-example fine-tuning set and one training epoch, with a common evaluation protocol within each model. These are the paper’s adapted baseline implementations under a single-H100 setup.</p>
-              <p>For the iterative methods—ScaleBiO, HG-baseline, and HG-MS—reweighting time is matched within each model: approximately 12 hours for Llama-3-8B, 9 for Qwen-2-7B, and 15 for Gemma-2-9B and Qwen2.5-32B. The noniterative baselines have no outer reweighting horizon. <a href="https://arxiv.org/html/2605.09209v1#A6.SS6">Experimental protocol</a>.</p>
+              <p>For the iterative methods (ScaleBiO, HG-baseline, and HG-MS), reweighting time is matched within each model: approximately 12 hours for Llama-3-8B, 9 for Qwen-2-7B, and 15 for Gemma-2-9B and Qwen2.5-32B. The noniterative baselines have no outer reweighting horizon. <a href="https://arxiv.org/html/2605.09209v1#A6.SS6">Experimental protocol</a>.</p>
               <p><a href="../../assets/data/select-then-differentiate-results.csv" download>Download both benchmarks (CSV)</a> · <a href="../../assets/images/select-then-differentiate-results.svg" download>Download GSM8K figure (SVG)</a></p>
             </details>
           </figure>
@@ -564,7 +564,7 @@
         <aside class="story-copy mathematical-note" aria-label="Optional mathematical explanation">
           <details>
             <summary>The mathematical idea</summary>
-            <p>Under the paper’s local regularity assumptions, including its Polyak–Łojasiewicz condition, a unique best choice on the training-solution manifold makes the outer objective locally differentiable—even when training has many minimizers. A pseudoinverse gives the corresponding hypergradient. <a href="https://arxiv.org/html/2605.09209v1#S3">See the precise assumptions and result</a>.</p>
+            <p>Under the paper’s local regularity assumptions, including its Polyak–Łojasiewicz condition, a unique best choice on the training-solution manifold makes the outer objective locally differentiable even when training has many minimizers. A pseudoinverse gives the corresponding hypergradient. <a href="https://arxiv.org/html/2605.09209v1#S3">See the precise assumptions and result</a>.</p>
             <p>The first diagram adapts a schematic from my presentation. Its curve represents a lower-level minimizer set: all points share the same optimal training objective. The 16 dots mark candidate models. The separate bar chart preserves the relative score lengths from the slide, using a shared baseline; bar heights encode a higher-is-better validation score, not counts or frequencies. A, B and C label three of the models in both panels. Model B has the largest score among those shown. These schematic scores could represent a shifted negative validation loss, so maximizing them is consistent with minimizing the outer objective. The curve represents a set of solutions, not an optimization trajectory; both axes are model parameters, while the background color represents training loss. The geometry and scores are illustrative, not measured LLM results; the diagram alone does not establish the theorem’s assumptions or identify the best point over the entire continuous curve.</p>
             <p>The LLM implementation uses practical finite-step branches; the exact-selection theory does not establish guarantees for those experiments. <a href="https://arxiv.org/html/2605.09209v1#S7">Theory and practice</a>.</p>
           </details>

@@ -90,7 +90,7 @@ Edit the HTML directly in a text editor.
 
 ### Biography and affiliations
 
-Home’s Email, Google Scholar, and GitHub icons are together in `#home-contact` at the bottom of `.home-closing`, just above the footer. About uses the same icons and keeps a readable email address in its contact paragraph. Each icon link has an accessible `aria-label`, a hover title, and a 44 px tap target. Keep these labels and the actual `href` in sync when editing destinations. The icons share one row on desktop and phones.
+Home’s Email, Google Scholar, GitHub, and LinkedIn icons are together in `#home-contact` at the bottom of `.home-closing`, just above the footer. About uses the same icons and keeps a readable email address in its contact paragraph. Each icon link has an accessible `aria-label`, a hover title, and a 44 px tap target. Keep these labels and the actual `href` in sync when editing destinations. The icons share one centered row on Home and About, on desktop and phones. The current GitHub profile is `https://github.com/smasiha`; LinkedIn is `https://www.linkedin.com/in/saeed-masiha-25b30514a/`. Use the public LinkedIn URL without the `isSelfProfile` query parameter. Update both Home and About when changing a contact link.
 
 The current biography describes a fifth-year PhD student at EPFL, advised by Negar Kiyavash and Patrick Thiran. Update Home, About, and their search/social descriptions together when a role is ready to be announced. Position information does not change automatically with the date; include only publicly announced roles.
 
@@ -99,6 +99,8 @@ About contains the fuller Niao He / Zebang Shen collaboration, two existing bile
 Researcher names link to verified academic profiles using `.person-link`. George Lan and publication author Guanghui Lan link to the same profile. Your publication author lists use **Saeed Masiha**. If a profile moves, update its occurrences throughout the website.
 
 Update each footer’s “Updated” date after meaningful edits. To change email, search for `mohammadsaeed.masiha@epfl.ch` in `docs/` and the article template; preserve `mailto:`. Navigation is repeated in each HTML page intentionally, so update all six public pages and the article template when necessary.
+
+Write prose without em dashes. Use full stops, commas, colons, or parentheses instead. Keep punctuation in mathematical names, paper titles, and numerical ranges accurate. Page titles separate the page name and author with `|`.
 
 ### News
 
@@ -127,7 +129,7 @@ The small sun/moon button beside the navigation switches between light and dark 
 
 `assets/js/theme.js` loads before the stylesheet to apply a saved choice before painting the page. Keep this order on new pages and adjust both asset paths for their depth. The public pages and unpublished article template share the switch. Theme colors are CSS variables: update both dark-palette blocks together (the system-preference media query and `[data-theme='dark']`) and check text, links, focus outlines, summaries, portrait frame, and article code/equations in both themes. Keep the light canvas and dark canvas values in the script’s browser-toolbar color update in sync with CSS.
 
-`assets/images/contact-icons.svg` is a local SVG sprite: `email`, `google-scholar`, `github`, `sun`, and `moon`. Google Scholar and GitHub marks come from Simple Icons 13.21.0; source URLs and the CC0 license are in `contact-icons-LICENSE.txt`. The email and theme icons are simple site-specific drawings. Icons inherit the theme’s text/link colors; do not use image filters on the portrait. Keep each icon SVG decorative (`aria-hidden="true"`) and label its enclosing link/button.
+`assets/images/contact-icons.svg` is a local SVG sprite: `email`, `google-scholar`, `github`, `linkedin`, `sun`, and `moon`. Google Scholar, GitHub, and LinkedIn marks come from Simple Icons 13.21.0; source URLs and the CC0 license are in `contact-icons-LICENSE.txt`. The email and theme icons are simple site-specific drawings. Icons inherit the theme’s text/link colors; do not use image filters on the portrait. Keep each icon SVG decorative (`aria-hidden="true"`) and label its enclosing link/button.
 
 ### Publications
 

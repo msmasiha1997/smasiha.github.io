@@ -168,6 +168,7 @@ body[data-page='home'] .site-layout { padding-top: 26px; }
 .news-date { color: var(--muted); font-size: 1rem; line-height: 1.85625; }
 .home-closing { margin-top: 34px; text-align: center; }
 .home-closing .contact-links { justify-content: center; }
+[data-page="about"] .contact-links { justify-content: center; }
 
 /* Bibliography: stable records with optional, keyboard-accessible summaries. */
 .section-links { display: flex; flex-wrap: wrap; gap: 0 24px; margin-top: 18px; }

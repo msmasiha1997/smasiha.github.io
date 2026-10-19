@@ -1,7 +1,8 @@
-Google Scholar and GitHub SVG paths from Simple Icons 13.21.0.
+Google Scholar, GitHub, and LinkedIn SVG paths from Simple Icons 13.21.0.
 Sources:
 https://github.com/simple-icons/simple-icons/blob/13.21.0/icons/googlescholar.svg
 https://github.com/simple-icons/simple-icons/blob/13.21.0/icons/github.svg
+https://github.com/simple-icons/simple-icons/blob/13.21.0/icons/linkedin.svg
 
 Email, sun, and moon are simple site-specific drawings.
 
