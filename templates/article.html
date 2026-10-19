@@ -13,9 +13,10 @@
   <!-- Before publishing: replace the sample content, remove noindex, and add the final canonical URL. See README.md. -->
   <link href="../docs/assets/images/favicon.svg" rel="icon" type="image/svg+xml"/>
   <script src="../docs/assets/js/theme.js?v=20260925-themes"></script>
-  <link rel="stylesheet" href="../docs/assets/css/site.css?v=20261016-visual-blog">
+  <script defer src="../docs/assets/js/back-to-top.js?v=20261019-top"></script>
+  <link rel="stylesheet" href="../docs/assets/css/site.css?v=20261019-top">
  </head>
- <body data-page="article">
+ <body id="top" data-page="article">
   <a class="skip-link" href="#main">
    Skip to content
   </a>
@@ -270,5 +271,9 @@ def step(x, gradient, learning_rate):
     </footer>
    </div>
   </div>
+  <a class="back-to-top" href="#top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 19V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Top</span>
+  </a>
  </body>
 </html>

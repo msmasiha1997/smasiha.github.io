@@ -14,6 +14,7 @@ DOCS = ROOT / "docs"
 ORIGIN = "https://smasiha.github.io/"
 ALLOWED_SCRIPTS = {
     DOCS / "assets/js/theme.js",
+    DOCS / "assets/js/back-to-top.js",
     DOCS / "assets/js/research-story.js",
     DOCS / "assets/js/sampling-story.js",
     DOCS / "assets/js/ula-model.js",

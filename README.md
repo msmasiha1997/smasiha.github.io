@@ -132,6 +132,10 @@ The small sun/moon button beside the navigation switches between light and dark 
 
 `assets/images/contact-icons.svg` is a local SVG sprite: `email`, `google-scholar`, `github`, `linkedin`, `sun`, and `moon`. Google Scholar, GitHub, and LinkedIn marks come from Simple Icons 13.21.0; source URLs and the CC0 license are in `contact-icons-LICENSE.txt`. The email and theme icons are simple site-specific drawings. Icons inherit the theme’s text/link colors; do not use image filters on the portrait. Keep each icon SVG decorative (`aria-hidden="true"`) and label its enclosing link/button.
 
+### Back to top
+
+Every public page and the article template includes a small “Top” link. `assets/js/back-to-top.js` turns it into a fixed button at the lower right after scrolling 75% of the viewport height (at least 400 px). Activating it jumps immediately to the top and returns keyboard focus to the first navigation link. There is no scroll animation, including when reduced motion is preferred. The button is hidden near the top and in print; without JavaScript it remains a native `#top` link below the footer. Preserve `id="top"` on the body, the link’s accessible label, and the deferred script when copying a page. Its styling is in `site.css`.
+
 ### Publications
 
 Every full record is an `<article class="publication">` in `docs/papers/index.html`. **Accepted & published papers** contains seven records: four in Nonconvex optimization and three in Information-theoretic methods in ML. **Preprints** contains three Nonconvex optimization records. These are sections with ordinary anchor links, not filters. Preserve exact titles, author order, confirmed venue/status, years, and paper URLs. Published years may differ from arXiv submission years.
@@ -287,7 +291,7 @@ When a real post is ready:
 
 1. Copy the template to `docs/writing/your-post-slug/index.html`, creating the folder first. Keep drafts outside `docs/`.
 2. Replace all sample content, dates, reading time, figure, code, and references. Remove `.template-note` and unused sections, including their table-of-contents links.
-3. Replace `../docs/assets/` paths with `../../assets/`. Set the Home, Publications, Research Blog, and About navigation links to `../../index.html`, `../../papers/index.html`, `../index.html`, and `../../about/index.html`. Preserve the theme script and accessible switch. Load additional animation code only when the new post uses it.
+3. Replace `../docs/assets/` paths with `../../assets/`. Set the Home, Publications, Research Blog, and About navigation links to `../../index.html`, `../../papers/index.html`, `../index.html`, and `../../about/index.html`. Preserve the theme script, accessible switch, and Back to top link/script. Load additional animation code only when the new post uses it.
 4. Set the actual title/description. Remove `noindex,nofollow` only when ready to publish. Add the canonical URL `https://smasiha.github.io/writing/your-post-slug/` and matching social metadata if desired.
 5. Keep one main heading, meaningful figure alternatives, equation explanations, valid citations, and a real `<time datetime="YYYY-MM-DD">` date.
 6. Add the post to the existing `docs/writing/index.html` listing with a linked title, short description, and date. Add its canonical URL to `docs/sitemap.xml`; do not duplicate the listing’s existing entry.
