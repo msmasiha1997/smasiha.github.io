@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 290" role="img" aria-labelledby="title description">
+  <title id="title">Choosing among many solutions</title>
+  <desc id="description">A circle represents equally good lower-level minimizers. The orange point at (0.6, 0.8) marks one solution selected for an upper-level objective. This is a schematic, not experimental data.</desc>
+  <g fill="none" stroke="#4b6179" stroke-width="1">
+    <path d="M26 150H343M170 22V270"/>
+    <circle cx="170" cy="150" r="52"/>
+    <circle cx="170" cy="150" r="72"/>
+    <circle cx="170" cy="150" r="113"/>
+    <circle cx="170" cy="150" r="135"/>
+  </g>
+  <circle cx="170" cy="150" r="92" fill="none" stroke="#a7c7f2" stroke-width="2.5"/>
+  <g fill="#a7c7f2">
+    <circle cx="262" cy="150" r="3"/><circle cx="170" cy="58" r="3"/>
+    <circle cx="78" cy="150" r="3"/><circle cx="170" cy="242" r="3"/>
+    <circle cx="104.95" cy="84.95" r="3"/><circle cx="104.95" cy="215.05" r="3"/>
+    <circle cx="235.05" cy="215.05" r="3"/>
+  </g>
+  <path d="M170 150L225.2 76.4" stroke="#efb582" stroke-dasharray="4 5"/>
+  <circle cx="225.2" cy="76.4" r="12" fill="#efb582" fill-opacity=".17"/>
+  <circle cx="225.2" cy="76.4" r="5" fill="#efb582"/>
+  <path d="M233 72L258 48H301" fill="none" stroke="#efb582"/>
+  <text x="267" y="29" fill="#f4cba8" font-family="Arial,sans-serif" font-size="16">Selected solution</text>
+  <path d="M107 217L79 246H25" fill="none" stroke="#a7c7f2"/>
+  <text x="25" y="271" fill="#cadcf4" font-family="Arial,sans-serif" font-size="16">Lower-level minimizers</text>
+</svg>

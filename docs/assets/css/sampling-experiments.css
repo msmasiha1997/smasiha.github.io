@@ -1,0 +1,199 @@
+/* Four experiments share one quiet visual grammar and independent controls. */
+.sampling-experiment { margin: 28px 0 42px; padding: 24px 28px; border: 1px solid var(--border); border-radius: 8px; background: var(--wash); }
+.sampling-experiment h3 { margin: 0 0 8px; color: var(--ink); font: 600 1.2rem/1.4 var(--sans); }
+.sampling-experiment h4 { margin: 0 0 4px; font: 600 1rem/1.4 var(--sans); color: var(--ink); }
+.sampling-experiment p { margin: 10px 0; }
+.sampling-experiment [hidden] { display: none !important; }
+.experiment-settings { display: flex; flex-wrap: wrap; align-items: end; gap: 16px 24px; margin: 20px 0; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+.experiment-settings label { display: flex; flex-direction: column; min-width: 0; gap: 6px; color: var(--text); font-size: .9375rem; font-weight: 600; }
+.experiment-settings select { min-height: 44px; max-width: 100%; padding: 8px 30px 8px 10px; border: 1px solid var(--portrait-border); border-radius: 4px; background: var(--paper); color: var(--text); font: 400 1rem/1.4 var(--sans); }
+.experiment-settings input[type='range'] { width: 100%; min-width: 120px; height: 44px; margin: 0; accent-color: var(--accent); cursor: pointer; }
+.experiment-settings .experiment-range { flex: 1 1 220px; }
+.experiment-settings output { color: var(--accent); font-size: .9375rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.experiment-plots { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.experiment-plots > * { min-width: 0; }
+.experiment-plots svg { display: block; width: 100%; height: auto; overflow: hidden; }
+.experiment-plots [data-solution] { fill: none; stroke: var(--ink); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.experiment-plots [data-previous] { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+.experiment-plots [data-particles] { fill: var(--accent); fill-opacity: .62; }
+.experiment-plots [data-plot='reference'] [data-particles] { fill-opacity: .48; }
+.experiment-plots .sampler-ticks { font-size: 21px; }
+.experiment-plots .sampler-axes { stroke: var(--portrait-border); stroke-width: 1; }
+.experiment-plot-caption, .experiment-note, .sampling-experiment figcaption, .sampling-experiment [data-outside] { color: var(--muted); font-size: .9375rem; line-height: 1.6; }
+.experiment-plot-caption { margin: 0; }
+.experiment-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 18px 0; }
+.experiment-actions button { min-height: 44px; padding: 8px 16px; border: 1px solid var(--portrait-border); border-radius: 5px; color: var(--text); background: var(--paper); font: 600 1rem/1.4 var(--sans); cursor: pointer; }
+.experiment-actions [data-run] { border-color: var(--accent); color: var(--accent); }
+.experiment-actions button:hover { background: var(--accent-soft); }
+.experiment-actions [data-progress] { color: var(--muted); font-size: .9375rem; font-variant-numeric: tabular-nums; }
+.experiment-metrics { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 24px; border-top: 1px solid var(--border); margin-top: 20px; padding-top: 16px; }
+.experiment-metrics > * { min-width: 0; }
+.experiment-metrics [data-discrepancy], .experiment-metrics [data-distance], .experiment-metrics [data-coupling] { display: block; margin: 4px 0; color: var(--accent); font: 600 1.7rem/1.2 var(--sans); font-variant-numeric: tabular-nums; }
+.experiment-metrics p { margin: 4px 0; font-size: .9375rem; line-height: 1.55; }
+.experiment-trace { display: block; width: 100%; max-width: 360px; height: auto; margin-top: 8px; }
+.experiment-trace [data-error-trace] { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.experiment-trace text { fill: var(--muted); font: 400 16px var(--sans); }
+.experiment-trace .sampler-axes { fill: none; stroke: var(--portrait-border); }
+.sampling-experiment [data-experiment-status] { margin-block: 18px 12px; color: var(--text); font-size: 1rem; line-height: 1.6; }
+.sampling-experiment [data-parameters] { font-variant-numeric: tabular-nums; }
+.family-parameter { margin-block: 20px 12px; }
+.family-parameter .experiment-range { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 12px; font-size: 1rem; font-weight: 600; }
+.family-parameter output { color: var(--accent); font-weight: 500; font-variant-numeric: tabular-nums; }
+.family-parameter input[type='range'] { grid-column: 1 / -1; width: 100%; min-width: 0; height: 44px; margin: 0; accent-color: var(--accent); cursor: pointer; }
+.family-parameter .experiment-note { margin-top: 0; }
+.sampling-experiment[data-family='true'] [data-parameters] { color: var(--text); font-weight: 500; }
+.family-settings, .family-diagnostics { margin-block: 16px; }
+.family-settings .experiment-settings { margin-block: 8px; padding-bottom: 0; border: 0; }
+.family-diagnostics .experiment-metrics { margin-top: 0; border-top: 0; padding-top: 8px; }
+.sampling-experiment figcaption { margin-top: 18px; }
+
+/* Linked scientific views: target density, actual chains and parameter geometry. */
+.sampling-lab { --sampling-field-filter: none; --chain-color: #196d68; --trail-color: #9a5734; }
+.sampling-linked-layout { display: grid; grid-template-columns: minmax(0,1fr); gap: 24px; align-items: center; }
+.sampling-lab[data-family='true'] .sampling-linked-layout { grid-template-columns: minmax(0,1.45fr) minmax(0,1fr); gap: 18px; }
+.sampling-linked-layout > * { min-width: 0; }
+.sampling-lab .sampling-active-panel { width: 100%; max-width: 520px; margin-inline: auto; }
+.sampling-active-panel h4 { text-align: center; }
+.sampling-lab [data-plot] { display: block; width: 100%; height: auto; overflow: hidden; }
+.sampling-lab .sampling-field-paper { fill: var(--paper); }
+.sampling-lab [data-sampling-field], .sampling-lab .sampling-density-ramp::before { filter: var(--sampling-field-filter); }
+.sampling-lab [data-solution] { fill: none; stroke: var(--ink); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.sampling-lab [data-previous] { fill: none; stroke: var(--muted); stroke-width: 1.4; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+.sampling-lab [data-particles] { fill: var(--chain-color); fill-opacity: .72; stroke: var(--paper); stroke-width: .45; }
+.sampling-lab [data-particles] .tracked-chain { fill: var(--trail-color); fill-opacity: 1; stroke-width: .9; r: 3.2px; }
+.sampling-lab [data-trails] { fill: none; stroke: var(--trail-color); stroke-opacity: .72; stroke-width: 1.35; stroke-linejoin: round; }
+.sampling-lab .sampler-axes { fill: none; stroke: var(--portrait-border); stroke-width: 1; }
+.sampling-lab .sampler-ticks { fill: var(--text); font: 400 20px var(--sans); }
+.sampling-lab .family-geometry-panel { padding-block: 12px; }
+.family-geometry-panel h4 { text-align: center; }
+.family-geometry-panel p { max-width: 30ch; margin: 0 auto; font-size: .875rem; }
+.family-geometry-chart { display: block; width: 100%; max-width: 360px; height: auto; margin-inline: auto; overflow: hidden; }
+.family-geometry-slice { fill: none; stroke: var(--muted); stroke-opacity: .36; stroke-width: 1.1; }
+.family-geometry-boundary { stroke-opacity: .62; }
+.family-geometry-active, .family-geometry-key { fill: none; stroke: var(--accent); stroke-width: 2.8; }
+.family-geometry-axis, .family-geometry-parameter-axis, .family-geometry-axis-tip, .family-geometry-parameter-tip { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.family-geometry-parameter-axis { stroke-dasharray: 4 4; }
+.family-geometry-chart text { fill: var(--text); font: 400 17px var(--sans); }
+.family-geometry-chart .family-geometry-selected-label { fill: var(--accent); font-weight: 600; }
+.family-geometry-chart .family-geometry-caption { fill: var(--muted); font-size: 15px; }
+.sampling-phase { display: flex; align-items: center; gap: 16px; margin: 20px 0 16px; font-size: .875rem; color: var(--muted); }
+.sampling-run-meter { display: block; flex: 1; height: 3px; background: var(--border); }
+.sampling-run-meter::before { content: ''; display: block; height: 100%; width: var(--run-progress,0%); background: var(--accent); }
+.sampling-visual-key { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; margin: 12px 0 20px; font-size: .875rem; line-height: 1.5; }
+.sampling-visual-key > span { display: inline-flex; align-items: center; gap: 7px; }
+.sampling-visual-key i { display: inline-block; width: 20px; }
+.sampling-visual-key .sample-key { width: 7px; height: 7px; border-radius: 50%; background: var(--chain-color); }
+.sampling-visual-key .set-key { border-top: 1.4px solid var(--ink); }
+.sampling-visual-key .trail-key { border-top: 2px solid var(--trail-color); }
+.sampling-visual-key .previous-key { border-top: 1.4px dashed var(--muted); }
+.sampling-density-key { display: grid; grid-template-columns: auto minmax(0,240px); gap: 4px 14px; align-items: center; justify-content: center; margin: 12px auto 24px; font-size: .875rem; line-height: 1.5; }
+.sampling-density-ramp { position: relative; height: 12px; border: 1px solid var(--border); background: var(--paper); }
+.sampling-density-ramp::before { content: ''; position: absolute; inset: 0; background: var(--density-ramp); }
+.sampling-density-ticks { grid-column: 2; position: relative; height: 1.6em; font-variant-numeric: tabular-nums; }
+.sampling-density-tick { position: absolute; left: var(--tick-position); transform: translateX(-50%); }
+.sampling-density-tick:first-child { transform: none; }
+.sampling-density-tick:last-child { left: auto; right: 0; transform: none; }
+.sampling-reference-panel { max-width: 340px; margin: 16px auto; }
+.sampling-reference-panel .experiment-note { font-size: .875rem; }
+.family-sweep-control { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin: 8px 0 12px; }
+.family-sweep-control button { min-height: 44px; padding: 7px 14px; border: 1px solid var(--portrait-border); border-radius: 5px; background: var(--paper); color: var(--text); font: 600 .9375rem/1.5 var(--sans); cursor: pointer; }
+.family-sweep-control button:hover { background: var(--accent-soft); }
+.family-sweep-control span { color: var(--muted); font-size: .875rem; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .sampling-lab { --sampling-field-filter: brightness(1.8); --chain-color: #83d9c9; --trail-color: #e7ad7b; }
+}
+:root[data-theme='dark'] .sampling-lab { --sampling-field-filter: brightness(1.8); --chain-color: #83d9c9; --trail-color: #e7ad7b; }
+@media (max-width: 760px) {
+  .sampling-lab[data-family='true'] .sampling-linked-layout { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .sampling-lab .family-geometry-panel { order: -1; display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 0 12px; align-items: center; }
+  .family-geometry-panel h4 { grid-column: 1 / -1; }
+  .family-geometry-chart text { font-size: 22px; }
+  .family-geometry-chart .family-geometry-caption { font-size: 18px; }
+}
+@media (max-width: 420px) {
+  .sampling-lab .family-geometry-panel { display: block; }
+  .family-geometry-chart { max-width: 300px; }
+  .family-geometry-chart text { font-size: 19px; }
+  .family-geometry-chart .family-geometry-caption { font-size: 16px; }
+  .family-geometry-panel p { max-width: none; }
+  .sampling-lab .sampler-ticks { font-size: 25px; }
+  .sampling-density-key { grid-template-columns: minmax(0,1fr); max-width: 270px; gap: 6px; }
+  .sampling-density-ticks { grid-column: 1; }
+}
+@media print {
+  :root .sampling-lab { --sampling-field-filter: none; --chain-color: #196d68; --trail-color: #9a5734; }
+  .sampling-lab [data-sampling-field], .sampling-density-ramp { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+
+/* The fixed Gibbs experiment shows a normalized density, with a fixed color scale. */
+.gibbs-density-figure { --density-color-filter: none; }
+.gibbs-density-figure .density-chart { display: block; width: 100%; max-width: 540px; height: auto; margin-inline: auto; }
+.gibbs-density-figure .density-plot-background { fill: var(--paper); }
+.gibbs-density-figure [data-density-image], .gibbs-density-figure .density-limit { filter: var(--density-color-filter); }
+.gibbs-density-figure .density-solution { fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-dasharray: 5 5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.gibbs-density-figure .density-limit { fill: none; stroke: rgb(45 109 177); stroke-width: 6; stroke-linecap: butt; stroke-linejoin: round; }
+.gibbs-density-figure .density-axes { fill: none; stroke: var(--muted); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.gibbs-density-figure .density-axis-text { fill: var(--text); font: 400 24px var(--sans); }
+.gibbs-density-figure .density-chart-key { margin: 18px 0 8px; color: var(--text); text-align: center; font-size: .9375rem; line-height: 1.5; }
+.gibbs-density-figure .density-solution-key { display: inline-block; width: 22px; margin-right: 8px; border-top: 1.3px dashed var(--ink); vertical-align: middle; }
+.gibbs-density-figure[data-density-mode='arc'] .density-solution-key { border-top: 6px solid rgb(45 109 177); filter: var(--density-color-filter); }
+.gibbs-density-figure .density-legend { width: 100%; max-width: 400px; margin: 8px auto 14px; padding-bottom: 6px; font-size: .875rem; line-height: 1.5; }
+.gibbs-density-figure .density-legend > p { margin: 0 0 8px; color: var(--text); font-size: .9375rem; line-height: 1.5; text-align: center; }
+.gibbs-density-figure .density-color-scale { position: relative; width: 100%; height: 14px; border: 1px solid var(--border); background-color: var(--paper); }
+.gibbs-density-figure .density-color-scale::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(to right, rgb(45 109 177 / 0), rgb(45 109 177 / 1)); filter: var(--density-color-filter); }
+.gibbs-density-figure .density-color-ticks { position: relative; width: 100%; height: 1.5em; margin-top: 5px; color: var(--text); font-variant-numeric: tabular-nums; }
+.gibbs-density-figure .density-color-ticks > span { position: absolute; left: var(--position); transform: translateX(-50%); white-space: nowrap; }
+.gibbs-density-figure .density-color-ticks > span:first-child { transform: none; }
+.gibbs-density-figure .density-color-ticks > span:last-child { left: auto; right: 0; transform: none; }
+.gibbs-density-figure .density-note { max-width: 48ch; margin: 10px auto 18px; color: var(--muted); text-align: center; font-size: .9375rem; line-height: 1.55; font-variant-numeric: tabular-nums; }
+.gibbs-density-figure .density-details { margin-block: 20px; padding-top: 4px; border-top: 1px solid var(--border); font-size: .9375rem; line-height: 1.6; }
+.gibbs-density-figure .density-details > summary { min-height: 44px; padding-block: 8px; color: var(--accent); font-size: 1rem; cursor: pointer; }
+.gibbs-density-figure .density-details > summary:hover { text-decoration: underline; }
+.gibbs-density-figure .density-details p { margin: 10px 0 14px; }
+.gibbs-density-figure .density-details math { font-size: 1em; }
+.gibbs-density-figure .density-inline-math { display: inline-block; max-width: 100%; overflow-x: auto; padding-block: 2px; vertical-align: middle; }
+.gibbs-density-figure .density-diagnostics { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 24px; margin: 18px 0; }
+.gibbs-density-figure .density-diagnostics > div { min-width: 0; }
+.gibbs-density-figure .density-diagnostics dt { color: var(--muted); font-size: .9375rem; line-height: 1.5; }
+.gibbs-density-figure .density-diagnostics dd { margin: 4px 0 0; color: var(--text); font: 600 1.3rem/1.3 var(--sans); font-variant-numeric: tabular-nums; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .gibbs-density-figure { --density-color-filter: brightness(2); }
+}
+:root[data-theme='dark'] .gibbs-density-figure { --density-color-filter: brightness(2); }
+@media (max-width: 520px) {
+  .gibbs-density-figure .density-axis-text { font-size: 32px; }
+  .gibbs-density-figure .density-diagnostics { grid-template-columns: minmax(0,1fr); gap: 14px; }
+}
+@media print {
+  :root .gibbs-density-figure, :root[data-theme] .gibbs-density-figure { --density-color-filter: none; }
+  .gibbs-density-figure .density-chart, .gibbs-density-figure .density-color-scale { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .gibbs-density-figure .density-chart { max-width: 460px; }
+}
+@media (forced-colors: active) {
+  .gibbs-density-figure .density-chart, .gibbs-density-figure .density-color-scale { forced-color-adjust: none; }
+  .gibbs-density-figure .density-plot-background { fill: Canvas; }
+  .gibbs-density-figure .density-axes, .gibbs-density-figure .density-solution { stroke: CanvasText; }
+  .gibbs-density-figure .density-axis-text { fill: CanvasText; }
+  .gibbs-density-figure .density-color-scale { background-color: Canvas; }
+}
+@media (max-width: 680px) {
+  .sampling-experiment { padding: 20px 16px; }
+  .experiment-settings { gap: 12px 16px; }
+  .experiment-plots { gap: 10px; }
+  .experiment-plots .sampler-ticks { font-size: 28px; }
+  .experiment-actions [data-progress] { flex-basis: 100%; }
+}
+@media (max-width: 520px) {
+  .experiment-plots { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .experiment-plots svg { max-width: 390px; margin-inline: auto; }
+  .experiment-plots .sampler-ticks { font-size: 24px; }
+  .experiment-metrics { grid-template-columns: minmax(0,1fr); gap: 18px; }
+  .experiment-settings > label, .experiment-settings .experiment-range { flex: 1 1 100%; }
+  .experiment-trace { max-width: 320px; }
+}
+@media print {
+  .sampling-experiment [data-experiment-controls], .sampling-experiment [data-motion-note] { display: none !important; }
+  .experiment-plots { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .sampling-experiment { break-inside: avoid; }
+  .experiment-plots [data-particles] { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}

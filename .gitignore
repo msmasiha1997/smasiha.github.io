@@ -1,0 +1,28 @@
+# Local operating-system and editor files
+.DS_Store
+._*
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Temporary previews and verification output
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+.cache/
+verification-output/
+
+# Local history may contain material that is not ready for public release.
+/design-history/
+/VERIFICATION.md
+/Saeed-Masiha-Website-Template.html
+/Slide__Paths_to_minima_slection/
+
+# Never commit local credentials
+.env
+.env.*
+!.env.example

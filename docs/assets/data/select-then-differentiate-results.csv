@@ -1,0 +1,49 @@
+model,method,benchmark,accuracy_percent,status,source_url
+Llama-3-8B,Uniform Weighting,GSM8K,60.06,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,Uniform Weighting,MATH,30.24,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,RHO-LOSS,GSM8K,65.43,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,RHO-LOSS,MATH,25.89,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,LESS,GSM8K,74.45,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,LESS,MATH,29.93,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,ScaleBiO,GSM8K,66.19,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,ScaleBiO,MATH,30.58,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,HG-baseline,GSM8K,73.77,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,HG-baseline,MATH,30.49,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,HG-MS,GSM8K,74.85,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Llama-3-8B,HG-MS,MATH,30.86,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,Uniform Weighting,GSM8K,60.03,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,Uniform Weighting,MATH,30.26,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,RHO-LOSS,GSM8K,63.15,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,RHO-LOSS,MATH,33.40,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,LESS,GSM8K,65.28,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,LESS,MATH,29.24,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,ScaleBiO,GSM8K,75.74,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,ScaleBiO,MATH,36.93,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,HG-baseline,GSM8K,68.46,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,HG-baseline,MATH,34.27,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,HG-MS,GSM8K,82.03,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen-2-7B,HG-MS,MATH,38.98,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,Uniform Weighting,GSM8K,78.08,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,Uniform Weighting,MATH,37.29,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,RHO-LOSS,GSM8K,78.47,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,RHO-LOSS,MATH,37.35,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,LESS,GSM8K,79.28,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,LESS,MATH,38.00,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,ScaleBiO,GSM8K,79.62,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,ScaleBiO,MATH,37.98,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,HG-baseline,GSM8K,80.14,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,HG-baseline,MATH,38.23,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,HG-MS,GSM8K,80.86,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Gemma-2-9B,HG-MS,MATH,38.48,completed,https://arxiv.org/html/2605.09209v1#S6.T2
+Qwen2.5-32B,Uniform Weighting,GSM8K,78.19,completed,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,Uniform Weighting,MATH,43.30,completed,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,RHO-LOSS,GSM8K,,OOM,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,RHO-LOSS,MATH,,OOM,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,LESS,GSM8K,,OOM,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,LESS,MATH,,OOM,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,ScaleBiO,GSM8K,88.40,completed,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,ScaleBiO,MATH,51.29,completed,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,HG-baseline,GSM8K,86.81,completed,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,HG-baseline,MATH,46.82,completed,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,HG-MS,GSM8K,92.58,completed,https://arxiv.org/html/2605.09209v1#S6.T3
+Qwen2.5-32B,HG-MS,MATH,53.32,completed,https://arxiv.org/html/2605.09209v1#S6.T3

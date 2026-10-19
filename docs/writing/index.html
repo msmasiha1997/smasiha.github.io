@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Research Blog — Saeed Masiha</title>
+  <meta name="description" content="Visual explanations of optimization and machine learning: solution selection, Langevin sampling, and LLM data reweighting.">
+  <meta name="author" content="Saeed Masiha">
+  <link rel="canonical" href="https://msmasiha1997.github.io/writing/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Saeed Masiha">
+  <meta property="og:title" content="Research Blog">
+  <meta property="og:description" content="Visual explanations of optimization and machine learning: solution selection, Langevin sampling, and LLM data reweighting.">
+  <meta property="og:url" content="https://msmasiha1997.github.io/writing/">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js?v=20261016-visual-blog"></script>
+  <link rel="stylesheet" href="../assets/css/site.css?v=20261016-visual-blog">
+  <link rel="stylesheet" href="../assets/css/research-story.css?v=20261018-method-emphasis">
+  
+</head>
+<body data-page="writing">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../papers/index.html">Publications</a>
+        <a aria-current="page" href="index.html">Research Blog</a>
+        <a href="../about/index.html">About</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" hidden>
+        <svg class="theme-icon-moon" width="22" height="22" aria-hidden="true" focusable="false"><use href="../assets/images/contact-icons.svg#moon"></use></svg>
+        <svg class="theme-icon-sun" width="22" height="22" aria-hidden="true" focusable="false"><use href="../assets/images/contact-icons.svg#sun"></use></svg>
+      </button>
+    </div>
+  </header>
+  <div class="site-layout">
+    <main id="main" tabindex="-1">
+
+      <header class="page-intro">
+        <h1>Research Blog</h1>
+        <p>Ideas behind the papers, explained through pictures, examples, and a little mathematics.</p>
+      </header>
+      <article class="post-list-entry" aria-labelledby="sampling-post-title">
+        <div class="post-thumbnail sampling-thumbnail" aria-hidden="true"><img src="../assets/images/sampling-thumbnail.svg" width="240" height="180" alt="" loading="lazy"></div>
+        <div>
+          <p class="post-kicker"><time datetime="2026-10-18">18 October 2026</time> · Interactive explainer</p>
+          <h2 id="sampling-post-title"><a href="sampling-hidden-solutions/index.html">Sampling from Manifolds of Minimizers</a></h2>
+          <p>Cool a Gibbs distribution toward its minimizers, then sample it with ULA. Follow both steps—from one solution set to a whole parameter family.</p>
+          <a class="post-read" href="sampling-hidden-solutions/index.html">Explore the simulations <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="post-list-entry" aria-labelledby="first-post-title">
+        <div class="post-thumbnail" aria-hidden="true">
+          <div class="manifold-thumbnail" aria-hidden="true">
+            <!-- manifold-thumbnail:start -->
+<svg class="manifold-diagram manifold-thumbnail" data-panel="landscape" viewBox="0 0 190 112" aria-hidden="true" focusable="false">
+<path class="manifold-curve" d="M18.148 54.334 L22.896 55.165 L24.676 55.325 L25.863 55.340 L27.050 55.268 L28.237 55.097 L29.424 54.824 L30.611 54.443 L31.798 53.956 L32.984 53.366 L34.171 52.682 L35.952 51.500 L37.732 50.178 L43.667 45.614 L44.853 44.844 L46.040 44.178 L47.227 43.636 L48.414 43.241 L49.601 43.009 L50.788 42.958 L51.975 43.100 L53.162 43.445 L54.349 43.998 L55.536 44.762 L56.722 45.736 L57.909 46.913 L59.096 48.285 L60.283 49.839 L61.470 51.558 L62.657 53.423 L64.437 56.445 L66.811 60.760 L71.559 69.531 L73.339 72.582 L74.526 74.474 L75.713 76.228 L76.900 77.825 L78.087 79.249 L79.274 80.489 L80.460 81.536 L81.647 82.386 L82.834 83.039 L84.021 83.497 L85.208 83.768 L86.395 83.861 L87.582 83.790 L88.769 83.571 L89.956 83.223 L91.143 82.765 L92.923 81.922 L95.297 80.625 L98.857 78.669 L100.638 77.832 L102.418 77.159 L103.605 76.820 L104.792 76.576 L105.979 76.430 L107.166 76.382 L108.353 76.428 L109.540 76.562 L111.320 76.901 L113.100 77.366 L118.441 78.894 L120.222 79.215 L121.409 79.315 L122.595 79.303 L123.782 79.162 L124.969 78.877 L126.156 78.438 L127.343 77.835 L128.530 77.063 L129.717 76.122 L130.904 75.012 L132.091 73.742 L133.278 72.318 L134.464 70.756 L136.245 68.189 L138.025 65.413 L140.992 60.543 L143.366 56.670 L145.147 53.923 L146.333 52.218 L147.520 50.642 L148.707 49.219 L149.894 47.968 L151.081 46.907 L152.268 46.050 L153.455 45.407 L154.642 44.984 L155.829 44.785 L157.016 44.809 L158.203 45.049 L159.389 45.498 L160.576 46.142 L161.763 46.967 L162.950 47.953 L164.137 49.080 L165.324 50.325 L167.104 52.358 L170.072 55.976 L171.852 58.144"/>
+<g class="manifold-candidates">
+<circle cx="25.270" cy="55.343" r="2"/>
+<circle cx="34.171" cy="52.682" r="2"/>
+<circle cx="43.073" cy="46.030" r="2"/>
+<circle cx="52.568" cy="43.247" r="2"/>
+<circle cx="61.470" cy="51.558" r="2"/>
+<circle cx="70.965" cy="68.470" r="2"/>
+<circle cx="79.867" cy="81.037" r="2"/>
+<circle cx="89.362" cy="83.412" r="2"/>
+<circle cx="98.264" cy="78.976" r="2"/>
+<circle cx="107.759" cy="76.394" r="2"/>
+<circle cx="116.661" cy="78.431" r="2"/>
+<circle cx="126.156" cy="78.438" r="2"/>
+<circle cx="135.058" cy="69.928" r="2"/>
+<circle cx="144.553" cy="54.817" r="2"/>
+<circle cx="153.455" cy="45.407" r="2"/>
+<circle cx="162.950" cy="47.953" r="2"/>
+</g>
+<circle class="manifold-selection" cx="126.156" cy="78.438" r="5"/>
+</svg>
+<!-- manifold-thumbnail:end -->
+          </div>
+        </div>
+        <div>
+          <p class="post-kicker"><time datetime="2026-10-16">16 October 2026</time> · Visual explainer</p>
+          <h2 id="first-post-title"><a href="same-training-loss/index.html">Same Training Loss, Different Behavior: Which Solution Should We Choose?</a></h2>
+          <p>Many models share the same minimum training loss. An animated landscape shows how a second criterion selects among them—and why that matters for LLM data reweighting.</p>
+          <a class="post-read" href="same-training-loss/index.html">Read the visual story <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer"><span>© 2026 Saeed Masiha</span><span>Updated October 2026</span></footer>
+  </div>
+</body>
+</html>

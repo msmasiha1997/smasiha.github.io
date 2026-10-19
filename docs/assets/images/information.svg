@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 98" role="img" aria-labelledby="information-title">
+  <title id="information-title">Schematic comparison of two probability distributions</title>
+  <path d="M15 16V81H131" fill="none" stroke="#d6e1f7"/>
+  <path d="M18 80C29 80 32 24 51 24S73 80 94 80Z" fill="#d9e3fa"/>
+  <path d="M48 80C65 80 66 35 87 35S109 80 128 80Z" fill="#f4dfd4" fill-opacity=".8"/>
+  <path d="M18 80C29 80 32 24 51 24S73 80 94 80" fill="none" stroke="#5f83d6" stroke-width="2.2"/>
+  <path d="M48 80C65 80 66 35 87 35S109 80 128 80" fill="none" stroke="#c77950" stroke-width="2.2"/>
+</svg>

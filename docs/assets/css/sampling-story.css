@@ -1,0 +1,137 @@
+/* Sampling article: same site palette, with numerically generated SVG figures. */
+.sampling-small { font-size: 1rem; line-height: 1.55; color: var(--muted); }
+.sampling-article .formula-equation { margin-block: 14px; }
+.sampling-article .formula-equation math { font-size: 1.2rem; }
+.sampling-roadmap { padding-left: 24px; margin-block: 22px; }
+.sampling-roadmap li { padding-left: 4px; margin-block: 12px; }
+.sampling-roadmap a { color: var(--text); text-decoration-color: var(--accent); }
+.sampling-subsection { margin-top: 38px; }
+.sampling-article .story-copy > h3 { margin: 30px 0 14px; font-size: 1.25rem; }
+.sampler-options { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 18px 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.sampler-options fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.sampler-options legend, .temperature-label { color: var(--ink); font-size: 1rem; font-weight: 600; }
+.sampler-options fieldset label { display: inline-flex; align-items: center; gap: 8px; margin-right: 16px; min-height: 44px; font-size: 1rem; cursor: pointer; }
+.sampler-options input { accent-color: var(--accent); width: 18px; height: 18px; margin: 0; }
+.temperature-label { display: flex; flex-direction: column; gap: 8px; }
+.temperature-label select { min-height: 44px; max-width: 100%; font: 400 1rem var(--sans); color: var(--text); border: 1px solid var(--portrait-border); border-radius: 4px; background: var(--paper); padding: 7px 32px 7px 10px; }
+.sampler-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px; align-items: center; margin-top: 20px; }
+.sampler-landscape, .sampler-diagnostics { min-width: 0; }
+.sampler-plot, .distance-chart { display: block; width: 100%; height: auto; }
+.sampler-axes { fill: none; stroke: var(--portrait-border); stroke-width: 1; }
+.sampler-ticks { fill: var(--muted); font: 400 17px var(--sans); }
+.sampler-plot .sampler-ticks { font-size: var(--sampler-label-size, 17px); }
+.sampler-target { fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linejoin: round; }
+.sampler-old-target { fill: none; stroke: var(--muted); stroke-width: 1.3; stroke-dasharray: 5 5; }
+.sampler-particles { fill: var(--accent); fill-opacity: .78; }
+.sampler-gd-trail { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 3 4; }
+.sampler-gd { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.sampler-outside { font-size: .875rem; line-height: 1.5; color: var(--muted); margin: 0; }
+.metric-label { font-size: 1rem; color: var(--text); margin: 0 0 6px; }
+.distance-value { font: 600 2.5rem/1.1 var(--sans); font-variant-numeric: tabular-nums; color: var(--accent); margin: 0 0 8px; }
+.metric-unit { display: block; font: 400 .875rem/1.5 var(--sans); color: var(--muted); margin-top: 6px; }
+.metric-start { margin: 0 0 8px; color: var(--muted); font-size: .9375rem; }
+.distance-chart { margin-block: 12px 8px; }
+.distance-trace { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.step-counter { font-size: .9375rem; font-variant-numeric: tabular-nums; margin: 0 0 14px; color: var(--text); }
+.sampler-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; font-size: .9375rem; line-height: 1.4; color: var(--text); }
+.sampler-legend > span { display: inline-flex; align-items: center; gap: 8px; }
+.legend-line { width: 22px; border-top: 2px solid var(--ink); }
+.legend-old { border-top: 1px dashed var(--muted); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.legend-diamond { width: 9px; height: 9px; transform: rotate(45deg); border: 2px solid var(--ink); background: var(--paper); }
+.sampler-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 24px; }
+.sampler-reset { min-height: 44px; font: 500 1rem/1.4 var(--sans); border: 1px solid var(--portrait-border); border-radius: 6px; background: var(--paper); color: var(--text); padding: 8px 16px; cursor: pointer; }
+.sampler-reset:hover { background: var(--accent-soft); }
+.sampler-status { font-size: 1rem; line-height: 1.5; min-height: 3em; margin: 14px 0 0; }
+.parameter-panel { margin-top: 18px; padding-top: 20px; border-top: 1px solid var(--border); }
+.parameter-heading { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; font-size: 1rem; }
+.parameter-heading label { color: var(--ink); font-weight: 600; }
+.parameter-heading output { font-variant-numeric: tabular-nums; color: var(--accent); }
+.parameter-panel input { display: block; width: 100%; height: 44px; margin: 4px 0; accent-color: var(--accent); cursor: pointer; }
+.parameter-panel p { font-size: 1rem; line-height: 1.5; margin: 0; color: var(--muted); }
+.cooling-figure h3 { margin-bottom: 8px; font: 600 1.25rem/1.4 var(--sans); }
+.cooling-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 22px; }
+.cooling-panel h4 { font-size: 1rem; font-weight: 600; margin: 0; }
+.cooling-panel h4 span { display: block; color: var(--muted); font-weight: 400; }
+.cooling-panel svg { display: block; width: 100%; height: auto; }
+.cooling-panel p { font-size: .9375rem; color: var(--muted); margin: 0; }
+.sampling-detail { border-block: 1px solid var(--border); padding-block: 6px; margin-block: 24px; }
+.sampling-detail summary { min-height: 44px; padding-block: 8px; color: var(--accent); cursor: pointer; font-size: 1rem; }
+.sampling-detail p { margin-top: 8px; font-size: 1rem; }
+.normal-rise h3 { margin: 0 0 8px; font: 600 1.2rem/1.4 var(--sans); }
+.normal-rise .normal-intro { margin: 0; font-size: 1rem; }
+.normal-rise .normal-key { margin: 14px 0 0; font-size: .9375rem; color: var(--muted); }
+.normal-plot { display: block; width: 100%; max-width: 480px; height: auto; margin: 0 auto; }
+.normal-curve { fill: none; stroke: var(--muted); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.normal-set-label { fill: var(--muted); font: italic 30px var(--sans); }
+.normal-probe-a { color: var(--accent); }
+.normal-probe-b { color: #9a4b16; }
+:root[data-theme='dark'] .normal-probe-b { color: #f2b17f; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .normal-probe-b { color: #f2b17f; }
+}
+.normal-probe line { stroke: currentColor; stroke-width: 3; vector-effect: non-scaling-stroke; }
+.normal-probe circle { fill: currentColor; stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.normal-probe .normal-origin { fill: var(--paper); }
+.normal-probe text { fill: currentColor; font: 700 28px var(--sans); text-anchor: middle; }
+.normal-controls { display: flex; align-items: center; gap: 20px; }
+.normal-controls[hidden] { display: none; }
+.normal-controls button { min-width: 95px; }
+.normal-range { flex: 1; min-width: 0; }
+.normal-range label { display: block; font-size: .9375rem; }
+.normal-range input { display: block; width: 100%; height: 44px; margin: 0; accent-color: var(--accent); cursor: pointer; }
+.normal-rise .normal-distance { font-size: .9375rem; margin: 6px 0 18px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.normal-losses { border-top: 1px solid var(--border); padding-top: 14px; }
+.normal-losses > p { font-size: 1rem; font-weight: 600; margin: 0 0 12px; }
+.normal-losses > p span { font-weight: 400; color: var(--muted); font-size: .875rem; white-space: nowrap; }
+.normal-loss-row { display: grid; grid-template-columns: 100px minmax(0, 1fr) 3.4em; align-items: center; gap: 12px; margin-block: 12px; font-size: .9375rem; }
+.normal-loss-label { font-weight: 600; }
+.normal-bar-track { display: block; height: 10px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.normal-bar-track > span { display: block; height: 100%; background: currentColor; }
+.normal-loss-value { text-align: right; font-variant-numeric: tabular-nums; }
+.normal-rise .normal-status { min-height: 3.2em; margin: 18px 0 0; font-size: 1rem; line-height: 1.6; }
+.sampling-routes { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px; margin-block: 24px; }
+.sampling-routes > div { border-top: 2px solid var(--border); padding-top: 16px; }
+.sampling-routes h3 { font: 600 1.125rem/1.4 var(--sans); }
+.sampling-routes p, .sampling-routes a { font-size: 1rem; }
+.sampling-routes a { display: inline-block; min-height: 44px; }
+@media (max-width: 680px) {
+  .sampler-layout { grid-template-columns: minmax(0,1fr); gap: 8px; }
+  .sampler-diagnostics { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 0 16px; align-items: start; }
+  .sampler-diagnostics > .metric-label { grid-column: 1/-1; }
+  .sampler-diagnostics .distance-value { grid-column: 1; grid-row: 2; font-size: 2.1rem; }
+  .sampler-diagnostics .metric-start { grid-column: 1; grid-row: 3; }
+  .sampler-diagnostics .distance-chart { grid-column: 2; grid-row: 2/4; margin: 0; }
+  .sampler-diagnostics .step-counter, .sampler-diagnostics > .sampling-small { grid-column: 1/-1; }
+  .sampler-diagnostics .step-counter { margin-top: 10px; }
+  .sampler-controls > .sampling-small { flex-basis: 100%; }
+  .sampler-status { min-height: 4.5em; }
+}
+@media (max-width: 520px) {
+  .sampler-plot { --sampler-label-size: 24px; }
+  .distance-chart .sampler-ticks { font-size: 18px; }
+  .sampler-diagnostics { display: block; }
+  .sampler-diagnostics .distance-chart { max-width: 320px; margin-block: 16px 8px; }
+  .sampler-options { gap: 12px; }
+  .temperature-label { width: 100%; }
+  .cooling-grid { grid-template-columns: minmax(0,1fr); gap: 28px; }
+  .cooling-panel { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.2fr); align-items: center; gap: 0 12px; }
+  .cooling-panel svg { grid-column: 2; grid-row: 1/3; }
+  .cooling-panel p { grid-column: 1; }
+  .sampling-routes { grid-template-columns: minmax(0,1fr); }
+  .normal-controls { gap: 12px; }
+  .normal-controls button { min-width: 80px; padding-inline: 10px; }
+  .normal-loss-row { grid-template-columns: 88px minmax(0, 1fr) 3.4em; gap: 8px; }
+  .normal-rise .normal-status { min-height: 6.4em; }
+}
+@media print {
+  .sampler-options, .sampler-controls, .parameter-panel, .sampler-status { display: none !important; }
+  .sampler-layout { grid-template-columns: 1.4fr 1fr; }
+  .sampler-diagnostics { display: block; }
+  .sampler-figure, .cooling-figure { break-inside: avoid; }
+  .sampler-particles, .distance-trace { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .normal-controls { display: none !important; }
+  .normal-rise .normal-status { min-height: 0; }
+  .normal-probe-b { color: #9a4b16 !important; }
+  .normal-bar-track { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}

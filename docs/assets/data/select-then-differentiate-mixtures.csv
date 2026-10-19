@@ -1,0 +1,10 @@
+model,reweighting_hours,method,source,reported_weight,source_url
+Qwen-2-7B,9,ScaleBiO,MathInstruct,0.996,https://arxiv.org/html/2605.09209v1#A6.T14
+Qwen-2-7B,9,ScaleBiO,SlimOrca,0.001,https://arxiv.org/html/2605.09209v1#A6.T14
+Qwen-2-7B,9,ScaleBiO,GPT4-LLM-Cleaned,0.001,https://arxiv.org/html/2605.09209v1#A6.T14
+Qwen-2-7B,9,HG-baseline,MathInstruct,0.996,https://arxiv.org/html/2605.09209v1#A6.T14
+Qwen-2-7B,9,HG-baseline,GPT4-LLM-Cleaned,0.003,https://arxiv.org/html/2605.09209v1#A6.T14
+Qwen-2-7B,9,HG-baseline,SlimOrca,0.000,https://arxiv.org/html/2605.09209v1#A6.T14
+Qwen-2-7B,9,HG-MS,DART-Math,0.940,https://arxiv.org/html/2605.09209v1#A6.T14
+Qwen-2-7B,9,HG-MS,MathInstruct,0.056,https://arxiv.org/html/2605.09209v1#A6.T14
+Qwen-2-7B,9,HG-MS,Orca-Math,0.004,https://arxiv.org/html/2605.09209v1#A6.T14
