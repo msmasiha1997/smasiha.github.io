@@ -1,6 +1,6 @@
 # Saeed Masiha’s research website
 
-A personal research website for academic hiring committees and industry research scientist / applied scientist teams. Prepared locally for **https://msmasiha1997.github.io/**; nothing has been uploaded or published.
+A personal research website for academic hiring committees and industry research scientist / applied scientist teams. Configured for **https://smasiha.github.io/**. GitHub Pages must be enabled to make the site public.
 
 The site uses plain HTML, shared CSS, local fonts and images, and small local scripts for the light/dark theme switch and the articles’ optional figure interactions and browser-based numerical simulations. There is no build step, package installation, or external rendering service needed to run the website. GitHub Pages serves only `docs/`.
 
@@ -276,7 +276,7 @@ When a real post is ready:
 1. Copy the template to `docs/writing/your-post-slug/index.html`, creating the folder first. Keep drafts outside `docs/`.
 2. Replace all sample content, dates, reading time, figure, code, and references. Remove `.template-note` and unused sections, including their table-of-contents links.
 3. Replace `../docs/assets/` paths with `../../assets/`. Set the Home, Publications, Research Blog, and About navigation links to `../../index.html`, `../../papers/index.html`, `../index.html`, and `../../about/index.html`. Preserve the theme script and accessible switch. Load additional animation code only when the new post uses it.
-4. Set the actual title/description. Remove `noindex,nofollow` only when ready to publish. Add the canonical URL `https://msmasiha1997.github.io/writing/your-post-slug/` and matching social metadata if desired.
+4. Set the actual title/description. Remove `noindex,nofollow` only when ready to publish. Add the canonical URL `https://smasiha.github.io/writing/your-post-slug/` and matching social metadata if desired.
 5. Keep one main heading, meaningful figure alternatives, equation explanations, valid citations, and a real `<time datetime="YYYY-MM-DD">` date.
 6. Add the post to the existing `docs/writing/index.html` listing with a linked title, short description, and date. Add its canonical URL to `docs/sitemap.xml`; do not duplicate the listing’s existing entry.
 7. Preview links, keyboard access, mathematics, code scrolling, and narrow layouts before committing.
@@ -295,24 +295,22 @@ Also inspect desktop, tablet, and phone layouts in both themes; Tab through the 
 
 ## Upload and publish
 
-The intended repository is **`msmasiha1997/msmasiha1997.github.io`**. This folder has its own local Git repository on `main`. The site has passed local validation and is ready for its first upload. The remote repository and Pages deployment must be configured separately; local preparation does not make the website public.
+The public repository is **[smasiha/smasiha.github.io](https://github.com/smasiha/smasiha.github.io)**. This local project uses `main`; its `origin` should point to `https://github.com/smasiha/smasiha.github.io.git`. The website address is **https://smasiha.github.io/**. A successful upload alone does not enable Pages.
 
-1. On GitHub, create a public repository named exactly `msmasiha1997.github.io` under `msmasiha1997`, leaving it empty. If it already contains work, preserve that history: clone it separately and copy only `docs/`, `templates/`, `tools/`, `README.md`, and `.gitignore`, then review and commit there.
-2. For a new, empty repository, run from this project folder. If the initial commit already exists and the working tree is clean, skip the `git add`, `git diff`, and `git commit` commands:
+1. From this project folder, check and upload your changes:
 
    ```sh
+   python3 tools/check_site.py
    git status
    git add README.md .gitignore docs templates tools
    git diff --cached --stat
-   git commit -m "Prepare research website for GitHub Pages"
-   git remote -v
-   git remote add origin https://github.com/msmasiha1997/msmasiha1997.github.io.git
+   git commit -m "Update research website"
    git push -u origin main
    ```
 
-   If `origin` has since been added, inspect and reuse the correct existing remote instead of adding it again. Use your usual GitHub authentication; never store credentials in the project or force-push over existing history.
+   If the working tree is clean, skip the `git add`, `git diff`, and `git commit` commands. Inspect `git remote -v` if uploads target the old account name; update an old `origin` with `git remote set-url origin https://github.com/smasiha/smasiha.github.io.git`. Use your usual GitHub authentication and preserve existing remote history.
 
-3. Select **Settings → Pages → Deploy from a branch → main → /docs → Save**, following [GitHub’s branch publishing instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
-4. Wait for deployment to finish, then check **https://msmasiha1997.github.io/** and all six pages, including the blog listing and both articles. Canonicals, sitemap, and robots target this address. No custom domain or `CNAME` is needed.
+2. In [the repository’s Pages settings](https://github.com/smasiha/smasiha.github.io/settings/pages), select **Source: Deploy from a branch → Branch: main → Folder: /docs → Save**, following [GitHub’s branch publishing instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+3. Wait for the Pages deployment to succeed in **Actions**, then check **https://smasiha.github.io/** and all six pages, including the blog listing and both articles. Canonicals, sitemap, and robots target this address. No custom domain or `CNAME` is needed.
 
 For later updates: edit, preview, check, commit the intended files, and `git push`. Pages redeploys from `main` and `/docs`; keep `.nojekyll` in place.

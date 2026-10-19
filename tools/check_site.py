@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
-ORIGIN = "https://msmasiha1997.github.io/"
+ORIGIN = "https://smasiha.github.io/"
 ALLOWED_SCRIPTS = {
     DOCS / "assets/js/theme.js",
     DOCS / "assets/js/research-story.js",
