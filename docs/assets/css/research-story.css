@@ -1,14 +1,27 @@
 /* Visual research notes. All colors inherit the site's light/dark palette. */
 body[data-page='writing'] .site-layout { max-width: 800px; }
 .post-kicker, .scene-number { color: var(--muted); font-size: .9375rem; letter-spacing: .025em; }
-.post-list-entry { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 30px; padding-block: 28px; border-block: 1px solid var(--border); }
+.post-list-entry { display: grid; grid-template-columns: 300px minmax(0, 1fr); align-items: start; gap: 32px; padding-block: 32px; border-top: 1px solid var(--border); }
+.post-list-entry:last-of-type { border-bottom: 1px solid var(--border); }
 .post-list-entry h2 { font-size: 1.75rem; line-height: 1.2; margin-bottom: 14px; }
 .post-list-entry h2 a { color: var(--ink); text-decoration: none; }
 .post-list-entry h2 a:hover { color: var(--accent); text-decoration: underline; }
 .post-list-entry p { margin-bottom: 12px; }
 .post-read { display: inline-flex; align-items: center; min-height: 44px; gap: 12px; }
-.post-thumbnail { background: var(--wash); border-radius: 8px; align-self: start; }
-.post-thumbnail svg { display: block; width: 100%; height: auto; }
+.post-preview { min-width: 0; margin: 0; }
+.post-preview svg { display: block; width: 100%; height: auto; background: var(--wash); border: 1px solid var(--border); border-radius: 8px; }
+.post-preview figcaption { margin-top: 10px; font-size: .9375rem; line-height: 1.45; color: var(--muted); }
+.post-preview text { fill: var(--text); font: 400 16px var(--sans); }
+.post-preview .preview-heading { fill: var(--ink); font-size: 17px; font-weight: 600; }
+.post-preview .preview-model { fill: var(--ink); font-weight: 600; }
+.post-preview .preview-coordinate { fill: var(--muted); }
+.preview-curve { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.preview-candidates { fill: var(--accent); stroke: var(--wash); stroke-width: 1; }
+.preview-axis, .preview-divider { fill: none; stroke: var(--border); stroke-width: 1; }
+.preview-score { fill: var(--muted); }
+.preview-selected { fill: var(--accent); }
+.preview-check { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.preview-particles, .preview-particle-key { fill: var(--text); stroke: var(--wash); stroke-width: .8; }
 body[data-page='research-post'] .site-layout { width: min(900px, calc(100% - 80px)); padding-top: 40px; }
 .story-copy { width: 100%; max-width: 660px; margin-inline: auto; }
 .story-header { text-align: center; max-width: 760px; }
@@ -85,10 +98,6 @@ body[data-page='research-post'] .site-layout { width: min(900px, calc(100% - 80p
 .manifold-figure figcaption { color: var(--text); font-size: 1.0625rem; line-height: 1.5; min-height: 3em; margin: 0; }
 .manifold-progress { color: var(--muted); font-size: .9375rem; }
 .manifold-controls { margin-top: 18px; }
-.manifold-thumbnail { padding: 14px 6px; }
-.manifold-thumbnail .manifold-selection { stroke-width: 1.5; }
-.manifold-thumbnail .manifold-curve { stroke-width: 1.75; }
-.manifold-thumbnail .manifold-candidates circle { stroke-width: .75; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) .manifold-figure { --manifold-gd: #e4a083; }
 }
@@ -261,6 +270,9 @@ body[data-page='research-post'] .site-layout { width: min(900px, calc(100% - 80p
 .paper-credit cite { font-style: normal; }
 .back-to-blog { display: inline-flex; align-items: center; min-height: 44px; margin-top: 10px; font-size: 1rem; }
 @media (max-width: 760px) {
+  .post-list-entry { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .post-list-entry > div { grid-row: 1; }
+  .post-preview { width: min(100%, 340px); }
   body[data-page='research-post'] .site-layout { width: calc(100% - 40px); }
   .story-figure { padding: 22px; }
   .method-steps { grid-template-columns: repeat(2,minmax(0,1fr)); margin-bottom: 20px; }
@@ -296,8 +308,6 @@ body[data-page='research-post'] .site-layout { width: min(900px, calc(100% - 80p
 }
 @media (max-width: 600px) {
   .formula-losses { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .post-list-entry { grid-template-columns: 1fr; gap: 20px; }
-  .post-thumbnail { width: 180px; }
   .story-header h1 { font-size: 2.125rem; }
   .story-deck { font-size: 1.125rem; }
   .story-section { margin-top: 38px; }
@@ -322,6 +332,8 @@ body[data-page='research-post'] .site-layout { width: min(900px, calc(100% - 80p
   .story-byline { column-gap: 7px; }
 }
 @media print {
+  .post-list-entry { break-inside: avoid; }
+  .post-preview svg { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   body[data-page='research-post'] .site-layout { width: 100%; }
   .story-controls, .back-to-blog { display: none !important; }
   .story-header, .story-section { break-before: auto; }
@@ -344,6 +356,13 @@ body[data-page='research-post'] .site-layout { width: min(900px, calc(100% - 80p
 }
 
 @media (forced-colors: active) {
+  .preview-curve, .preview-check { stroke: Highlight; }
+  .preview-candidates, .preview-selected { fill: Highlight; }
+  .preview-candidates, .preview-particles, .preview-particle-key { stroke: Canvas; }
+  .preview-score, .preview-particles, .preview-particle-key { fill: CanvasText; }
+  .post-preview .preview-selected { fill: Highlight; }
+  .post-preview text, .post-preview .preview-heading, .post-preview .preview-model, .post-preview .preview-coordinate { fill: CanvasText; }
+  .preview-axis, .preview-divider { stroke: GrayText; }
   .manifold-landscape { opacity: .2; }
   .manifold-curve, .manifold-selection { stroke: Highlight; }
   .manifold-candidates circle { fill: Highlight; stroke: Canvas; }

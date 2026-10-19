@@ -165,5 +165,6 @@ if __name__ == '__main__':
   <p>The validation scores are schematic values from the presentation, not experimental measurements. This illustrates dependence on initialization; it does not assert convergence for every starting point or step size.</p>
 </details>'''
     replace(ROOT / 'docs/writing/same-training-loss/index.html', 'manifold-diagrams', panels)
-    replace(ROOT / 'docs/writing/index.html', 'manifold-thumbnail', diagram('thumbnail'))
-    print('Validated GD; rebuilt its loss heatmap, responsive diagrams and unchanged slide thumbnail.')
+    # Listing previews are owned by build_blog_previews.py. Regenerating the
+    # article must not replace its informative preview with the legacy thumbnail.
+    print('Validated GD; rebuilt its loss heatmap and responsive article diagrams.')

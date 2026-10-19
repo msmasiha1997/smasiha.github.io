@@ -49,12 +49,13 @@ docs/
 templates/article.html       Unpublished article layout
 tools/check_site.py          Lightweight standard-library Python checker
 tools/check_ula.py           Optional numerical checks and snapshot generation
-tools/build_sampling_figures.py  Rebuild normal slices and sampling thumbnail
+tools/build_sampling_figures.py  Rebuild normal slices and the legacy sampling thumbnail
 tools/build_sampling_experiments.py  Rebuild ULA fields, paths, clouds and family-geometry fallbacks
 tools/build_gibbs_density.py  Rebuild the 2D Gibbs density figure and warm PNG
 tools/check_gibbs.py         Optional quadrature and multi-schedule numerical checks
 tools/plot_blog_results.py    Optional regeneration of the downloadable results figure
 tools/build_manifold_diagram.py  Rebuild the minimizer figure and computed loss heatmap (standard library)
+tools/build_blog_previews.py     Rebuild the two informative figures on the Research Blog listing
 tools/manifold_gd.py  Toy loss, analytic gradient and reproducible GD trajectories
 tools/manifold-geometry.json  Preserved schematic curve/candidate geometry from the slides
 Slide__Paths_to_minima_slection/  Local reference slides and papers, excluded from Git
@@ -63,7 +64,7 @@ Saeed-Masiha-Website-Template.html  Original preview, unchanged and excluded fro
 VERIFICATION.md              Local-only validation history, excluded from Git
 ```
 
-The navigation contains **Home, Publications, Research Blog, and About**. Home keeps the research introduction and recent announcements concise. Publications separates accepted/published papers from preprints, with research-area subheadings and native HTML summary disclosures. About develops the research and background. Research Blog lists two real articles. The first, **“Same Training Loss, Different Behavior: Which Solution Should We Choose?”**, explains candidate selection using an animated minimizer diagram adapted from the supplied presentation, a schematic of LLM data reweighting, math-benchmark comparisons across four models, and then Qwen-2-7B’s measured final source mixtures; it is ready locally but has not been published. The second, **“Sampling from Manifolds of Minimizers”**, starts with a fixed loss and local growth, separates Gibbs concentration from ULA sampling, then repeats both steps with SQ-G’s parameter-uniform guarantees. A two-dimensional Gibbs density map and two computed ULA experiments illustrate these distinct steps, with linked geometry for the parameter family. Applications appear briefly at the end. Both are linked from the blog listing.
+The navigation contains **Home, Publications, Research Blog, and About**. Home keeps the research introduction and recent announcements concise. Publications separates accepted/published papers from preprints, with research-area subheadings and native HTML summary disclosures. About develops the research and background. Research Blog lists two real articles. The first, **“Same Training Loss, Different Behavior: Which Solution Should We Choose?”**, explains candidate selection using an animated minimizer diagram adapted from the supplied presentation, a schematic of LLM data reweighting, math-benchmark comparisons across four models, and then Qwen-2-7B’s measured final source mixtures; it is published with the rest of the site. The second, **“Sampling from Manifolds of Minimizers”**, starts with a fixed loss and local growth, separates Gibbs concentration from ULA sampling, then repeats both steps with SQ-G’s parameter-uniform guarantees. A two-dimensional Gibbs density map and two computed ULA experiments illustrate these distinct steps, with linked geometry for the parameter family. Applications appear briefly at the end. Both are linked from the blog listing.
 
 All pages share centered navigation and content columns, blue links, Newsreader headings, and Source Sans 3 body text. Light mode uses a white background; dark mode uses a dark slate background and lighter text and links. Main text is 18 px. Home and About use a comfortable 660 px reading column; Publications allows 800 px for long titles and author lists. Home’s circular portrait and name are centered above the introduction, with contact icons centered below the news. Paragraphs retain a natural left edge for reading.
 
@@ -152,6 +153,15 @@ The lower-bounds paper is titled “Sharp First-Order Lower Bounds under α-Poly
 
 ## Maintain the Research Blog
 
+The listing at `docs/writing/index.html` uses two informative SVG figures with visible legends, captions, and accessible descriptions. The selection preview preserves the article’s toy minimizer geometry and the relative illustrative validation scores for A, B, and C. The sampling preview uses all 64 recorded ULA particles from the existing 6,000-step run at λ = 0.06 and h = 0.01, together with the exact solution ellipse. It is a finite toy simulation, not a proof of convergence or an LLM experiment. These listing figures inherit the light/dark theme and move below their article introductions on smaller screens.
+
+Edit `tools/build_blog_previews.py` for the `sampling-preview` and `selection-preview` generated blocks. Their sources are `tools/manifold-geometry.json` and `docs/assets/data/ula-examples.json`. The original article-figure generators do not own these new listing blocks. Regenerate and verify with:
+
+```sh
+python3 tools/build_blog_previews.py
+python3 tools/build_blog_previews.py --check
+```
+
 The first article lives at `docs/writing/same-training-loss/index.html`. Its opening figure shows three **computed gradient-descent runs** from different initializations, using the same toy loss and step size (η = 0.16). Dashed rust paths approach A, B and C on the solid blue minimizer curve. The background is computed from that same loss. The source presentation's 16 candidate positions and relative validation scores are preserved, with A/B/C labels linking the panels. Validation bars are schematic, not measured performance.
 
 One Play/Pause/Resume/Replay button runs a finite nine-second sequence: descent, different zero-loss limits, validation scores, then selection of B. It does not autoplay or loop. Early iterations receive more playback time; the displayed iteration counter follows the actual precomputed iterates. Reduced motion steps through the four states without animation. Without JavaScript or when printing, all three paths and the final selection remain visible; printing restores the prior interactive state afterward. The disclosure explains the construction and its limits. Check all four states in both themes on mobile and desktop.
@@ -195,7 +205,7 @@ python3 tools/manifold_gd.py
 python3 tools/build_manifold_diagram.py
 ```
 
-The first command checks the analytic gradient against finite differences, spline continuity, decreasing losses, distinct endpoints near A/B/C, and plot bounds. The generator runs those checks too, then updates the PNG and only the `manifold-diagrams` / `manifold-thumbnail` marked HTML blocks. Edit the generator for those blocks, including the disclosure; edit the surrounding article and controller for stage captions and timing. Keep the generated paths, static descriptions, four stage captions, and mathematical explanation consistent. The local reference slide folder is not needed for rebuilding or publishing and is excluded from Git. The source PDF and preserved JSON are unchanged. Preserve the separate LLM controller and measured-results assets when revising the opening figure.
+The first command checks the analytic gradient against finite differences, spline continuity, decreasing losses, distinct endpoints near A/B/C, and plot bounds. The generator runs those checks too, then updates the PNG and only the article’s `manifold-diagrams` marked HTML block. Edit the generator for those blocks, including the disclosure; edit the surrounding article and controller for stage captions and timing. Keep the generated paths, static descriptions, four stage captions, and mathematical explanation consistent. The local reference slide folder is not needed for rebuilding or publishing and is excluded from Git. The source PDF and preserved JSON are unchanged. Preserve the separate LLM controller and measured-results assets when revising the opening figure.
 
 Do not add a Code button until a real paper-specific repository is available. Use the article’s paper and section links for evidence.
 
@@ -231,7 +241,7 @@ The diagnostic is a **W₁ upper bound**, not an exact distance or exact couplin
 
 The shape selector keeps the current temperature. Restart returns the selected shape to λ = .3. Cooling runs only on request and can be paused; the λ slider also stops playback. Reduced motion steps through .3, .15, .06, .02, .005 and 0. Printing pauses and retains the current distribution. `gibbs-density-warm.png` supplies the initial no-JavaScript view, with an explicit static-state explanation. The stiffness animation remains inside the following limiting-law disclosure.
 
-The normal-displacement illustration’s static endpoint and listing thumbnail retain their reproducible source in `ula-examples.json`. Update `normal_slices()` in `tools/build_sampling_figures.py` when changing the illustration’s markup; preserve its `normal-slices` generation markers and keep its geometry/scales synchronized with `normal-rise.js`. Rebuild them with the standard-library helper:
+The normal-displacement illustration’s static endpoint and legacy standalone sampling thumbnail retain their reproducible source in `ula-examples.json`. The Research Blog listing now uses the separate `build_blog_previews.py` generator described above. Update `normal_slices()` in `tools/build_sampling_figures.py` when changing the illustration’s markup; preserve its `normal-slices` generation markers and keep its geometry/scales synchronized with `normal-rise.js`. Rebuild them with the standard-library helper:
 
 ```sh
 python3 tools/build_sampling_figures.py
@@ -310,7 +320,7 @@ The public repository is **[smasiha/smasiha.github.io](https://github.com/smasih
    git push -u origin main
    ```
 
-   If the working tree is clean, skip the `git add`, `git diff`, and `git commit` commands. Inspect `git remote -v` if uploads target the old account name; update an old `origin` with `git remote set-url origin https://github.com/smasiha/smasiha.github.io.git`. Use your usual GitHub authentication and preserve existing remote history.
+   If the working tree is clean, skip the `git add`, `git diff`, and `git commit` commands. Inspect `git remote -v` if uploads target the old account name; update an old `origin` with `git remote set-url origin https://github.com/smasiha/smasiha.github.io.git`. This checkout fetches over HTTPS and pushes over SSH to the same repository (`git@github.com:smasiha/smasiha.github.io.git`). If configuring another checkout to use your existing GitHub SSH key, run `git remote set-url --push origin git@github.com:smasiha/smasiha.github.io.git`. Preserve existing remote history.
 
 2. In [the repository’s Pages settings](https://github.com/smasiha/smasiha.github.io/settings/pages), select **Source: Deploy from a branch → Branch: main → Folder: /docs → Save**, following [GitHub’s branch publishing instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 3. Wait for the Pages deployment to succeed in **Actions**, then check **https://smasiha.github.io/** and all six pages, including the blog listing and both articles. Canonicals, sitemap, and robots target this address. No custom domain or `CNAME` is needed.
