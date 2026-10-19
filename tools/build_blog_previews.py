@@ -62,7 +62,7 @@ def selection_preview():
     <text class="preview-heading" x="18" y="179">Validation score ↑</text>
     {''.join(bars)}
   </svg>
-  <figcaption id="selection-preview-caption">Validation selects B from equally good training solutions. Scores are illustrative.</figcaption>
+  <figcaption id="selection-preview-caption">Toy example with illustrative validation scores.</figcaption>
 </figure>'''
 
 
@@ -97,7 +97,7 @@ def sampling_preview():
     <circle class="preview-particle-key" cx="30" cy="256" r="3.5"/>
     <text class="preview-label" x="52" y="261">64 simulated ULA particles</text>
   </svg>
-  <figcaption id="sampling-preview-caption">A finite toy run near the solution set: {run['step']:,} steps, λ = {run['temperature']}, h = {parameters['h']}.</figcaption>
+  <figcaption id="sampling-preview-caption">Toy ULA simulation after {run['step']:,} steps.</figcaption>
 </figure>'''
 
 
