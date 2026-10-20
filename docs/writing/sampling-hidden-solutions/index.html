@@ -16,9 +16,9 @@
   <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
   <script src="../../assets/js/theme.js?v=20261016-visual-blog"></script>
   <script defer src="../../assets/js/back-to-top.js?v=20261019-top"></script>
-  <script defer src="../../assets/js/article-resources.js?v=20261020-resources"></script>
+  <script defer src="../../assets/js/article-resources.js?v=20261020-sticky-copy"></script>
   <link rel="stylesheet" href="../../assets/css/site.css?v=20261019-top">
-  <link rel="stylesheet" href="../../assets/css/research-story.css?v=20261020-column">
+  <link rel="stylesheet" href="../../assets/css/research-story.css?v=20261020-sticky-copy">
   <link rel="stylesheet" href="../../assets/css/sampling-story.css?v=20261019-remove-step">
   <link rel="stylesheet" href="../../assets/css/sampling-experiments.css?v=20261020-column">
   <script type="module" src="../../assets/js/sampling-story.js?v=20261019-no-rate"></script>
@@ -52,7 +52,7 @@
         <div class="post-contents">
           <nav aria-label="Contents">
             <details data-post-contents open>
-              <summary>Contents</summary>
+              <summary>Contents<span class="contents-current" data-contents-current></span></summary>
               <ol>
                   <li><a href="#hidden-set">The minimizer set</a></li>
                   <li><a href="#gibbs-limit">Gibbs concentration</a></li>
@@ -614,10 +614,11 @@
         </section>
         <section class="story-copy post-citation" aria-labelledby="cite-this-post">
           <h2 id="cite-this-post">Cite this post</h2>
-          <p>Masiha, S. (2026). <a href="https://smasiha.github.io/writing/sampling-hidden-solutions/"><cite>Sampling from Manifolds of Minimizers</cite></a>. Saeed Masiha’s Research Blog, 18 October 2026.</p>
-          <details>
-            <summary>Show BibTeX</summary>
-            <pre tabindex="0" aria-label="BibTeX citation for this blog post"><code>@misc{masiha2026samplingminimizers,
+          <div class="citation-tools">
+            <button class="citation-copy" type="button" data-copy-citation hidden>Copy BibTeX</button>
+            <span class="citation-copy-status" data-copy-status role="status"></span>
+          </div>
+          <pre tabindex="0" aria-label="BibTeX citation for this blog post"><code>@misc{masiha2026samplingminimizers,
   author = {Masiha, Saeed},
   title = {{Sampling from Manifolds of Minimizers}},
   year = {2026},
@@ -626,8 +627,6 @@
   url = {https://smasiha.github.io/writing/sampling-hidden-solutions/},
   note = {Published 18 October 2026}
 }</code></pre>
-          </details>
-          <a class="citation-download" href="citation.bib" download="masiha2026samplingminimizers.bib">Download BibTeX (.bib)</a>
           <p><a class="back-to-blog" href="../index.html">← Research Blog</a></p>
         </section>
       </article>
