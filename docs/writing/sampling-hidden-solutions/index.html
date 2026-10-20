@@ -16,8 +16,9 @@
   <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
   <script src="../../assets/js/theme.js?v=20261016-visual-blog"></script>
   <script defer src="../../assets/js/back-to-top.js?v=20261019-top"></script>
+  <script defer src="../../assets/js/article-resources.js?v=20261020-resources"></script>
   <link rel="stylesheet" href="../../assets/css/site.css?v=20261019-top">
-  <link rel="stylesheet" href="../../assets/css/research-story.css?v=20261018-method-emphasis">
+  <link rel="stylesheet" href="../../assets/css/research-story.css?v=20261020-resources">
   <link rel="stylesheet" href="../../assets/css/sampling-story.css?v=20261019-remove-step">
   <link rel="stylesheet" href="../../assets/css/sampling-experiments.css?v=20261019-linked">
   <script type="module" src="../../assets/js/sampling-story.js?v=20261019-no-rate"></script>
@@ -48,10 +49,26 @@
           <p class="story-deck">From loss and gradient evaluations to sampling an entire solution set.</p>
           <div class="story-byline"><span>Saeed Masiha</span><span aria-hidden="true">·</span><time datetime="2026-10-18">18 October 2026</time><span aria-hidden="true">·</span><span>Interactive explainer</span></div>
         </header>
+        <div class="post-contents">
+          <nav aria-label="Contents">
+            <details data-post-contents open>
+              <summary>Contents</summary>
+              <ol>
+                  <li><a href="#hidden-set">The minimizer set</a></li>
+                  <li><a href="#gibbs-limit">Gibbs concentration</a></li>
+                  <li><a href="#fixed-set-convergence">Sampling with ULA</a></li>
+                  <li><a href="#moving-family">A parameter family</a></li>
+                  <li><a href="#two-routes">A brief application</a></li>
+                  <li><a href="#references">References</a></li>
+                  <li><a href="#cite-this-post">Cite this post</a></li>
+              </ol>
+            </details>
+          </nav>
+        </div>
         <div class="story-copy story-opening">
           <p>Suppose a smooth loss <i>g</i>(<i>x</i>) has a curved set of minimizers. We can evaluate the loss and its gradient, but cannot parametrize the set or project onto it. <strong>How can we sample a distribution that explores the whole solution set?</strong></p>
           <p>Sampling settings that work for one loss may deteriorate as the loss changes. <strong>Can one sampling prescription work across an entire family?</strong></p>
-          <p>We start with Gibbs concentration and Langevin sampling. Our <a href="https://arxiv.org/abs/2505.05991">Superquantile–Gibbs (SQ-G) paper</a> establishes uniform guarantees: <a href="#uniform-assumptions">under its structural, regularity and tail assumptions</a>, common choices of temperature, step size and run length control concentration and sampling errors across the family.</p>
+          <p>We start with Gibbs concentration and Langevin sampling. Our <a href="https://arxiv.org/abs/2505.05991">Superquantile–Gibbs (SQ-G) paper</a> <a class="reference-link" href="#ref-sqg" aria-label="Reference 1: Superquantile-Gibbs">[1]</a> establishes uniform guarantees: <a href="#uniform-assumptions">under its structural, regularity and tail assumptions</a>, common choices of temperature, step size and run length control concentration and sampling errors across the family.</p>
         </div>
 
         <section class="story-section story-copy" aria-labelledby="hidden-set">
@@ -268,7 +285,7 @@
               <p><a href="https://arxiv.org/html/2505.05991v5#S2.Thmthm10">SQ-G, Proposition 2.10</a>, uses the paper’s PL<sup>∘</sup> condition, a bounded second fundamental form of <i>S</i>, and specified smoothness and tail bounds.</p>
               <p>The rate uses <a href="https://arxiv.org/html/2505.05991v5#S2.Thmthm6">Assumption 2.6</a> and <a href="https://arxiv.org/html/2505.05991v5#S2.Thmthm7">Assumption 2.7</a>, together with four clauses of <a href="https://arxiv.org/html/2505.05991v5#S2.Thmthm8">Assumption 2.8</a>: a C<sup>2</sup> extension, a globally Lipschitz lower-level gradient, a continuous Hessian, and the uniform tail gradient error bound.</p>
               <p>The full PL<sup>∘</sup> condition in <a href="https://arxiv.org/html/2505.05991v5#S2.Thmthm2">Definition 2.2</a> also includes C<sup>4</sup> regularity near local minima, boundedness of the set of local minima, and a negative-definite Hessian at critical points outside the local PL neighborhoods.</p>
-              <p class="sampling-small">The Laplace/Wasserstein reference used in SQ-G is <a href="https://arxiv.org/html/2207.08551v2#S3.Thmtheorem6">Hasenpflug, Rudolf and Sprungk (2024), Theorem 3.6</a>. SQ-G adapts their argument to its geometric assumptions: <a href="https://arxiv.org/html/2505.05991v5#S2.Thmthm9">Proposition 2.9</a> identifies the limit and <a href="https://arxiv.org/html/2505.05991v5#S2.Thmthm10">Proposition 2.10</a> gives the fixed-loss W₁ bound.</p>
+              <p class="sampling-small">The Laplace/Wasserstein reference used in SQ-G is <a href="https://arxiv.org/html/2207.08551v2#S3.Thmtheorem6">Hasenpflug, Rudolf and Sprungk (2024), Theorem 3.6</a> <a class="reference-link" href="#ref-laplace" aria-label="Reference 2: Wasserstein convergence rates">[2]</a>. SQ-G adapts their argument to its geometric assumptions: <a href="https://arxiv.org/html/2505.05991v5#S2.Thmthm9">Proposition 2.9</a> identifies the limit and <a href="https://arxiv.org/html/2505.05991v5#S2.Thmthm10">Proposition 2.10</a> gives the fixed-loss W₁ bound.</p>
             </details>
 
             <details class="sampling-detail" id="limiting-distribution"><summary>Which distribution lives on the minimizer set?</summary>
@@ -337,7 +354,7 @@
             <p>Samples can get close to <i>S</i> while remaining clustered in one region. To approximate the Gibbs law, they must also explore other regions in the right proportions. A <strong>Poincaré inequality</strong> helps control how quickly the underlying Langevin diffusion approaches this distribution:</p>
             <div class="formula-equation" role="region" tabindex="0" aria-label="Variance under mu lambda of phi is at most C P I times the integral of squared gradient phi under mu lambda"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Variance under mu lambda of phi is at most C P I times the integral of squared gradient phi under mu lambda"><msub><mi mathvariant="normal">Var</mi><msup><mi>μ</mi><mi>λ</mi></msup></msub><mo stretchy="false">(</mo><mi>φ</mi><mo stretchy="false">)</mo><mo>≤</mo><msub><mi>C</mi><mi mathvariant="normal">PI</mi></msub><mo>∫</mo><msup><mrow><mo>‖</mo><mo>∇</mo><mi>φ</mi><mo>‖</mo></mrow><mn>2</mn></msup><mi mathvariant="normal">d</mi><msup><mi>μ</mi><mi>λ</mi></msup></math></div>
             <p class="sampling-small">For a smooth test function φ, this compares variance with average squared gradient. At fixed λ, a smaller C<sub>PI</sub> gives a stronger relaxation bound for the diffusion.</p>
-            <p><a href="https://arxiv.org/html/2501.00429v2#Thmtheorem4">Yun Gong, Niao He and Zebang Shen</a> establish a temperature-independent bound on C<sub>PI</sub> for sufficiently small λ in their local PL setting, with additional regularity, tail and geometric assumptions. Their result relates this bound to the minimizer manifold’s spectral gap.</p>
+            <p><a href="https://arxiv.org/html/2501.00429v2#Thmtheorem4">Yun Gong, Niao He and Zebang Shen</a> <a class="reference-link" href="#ref-poincare" aria-label="Reference 3: Poincare inequality">[3]</a> establish a temperature-independent bound on C<sub>PI</sub> for sufficiently small λ in their local PL setting, with additional regularity, tail and geometric assumptions. Their result relates this bound to the minimizer manifold’s spectral gap.</p>
             <p>ULA also needs <a href="#sampling-conditions">smoothness, controlled initialization and jointly chosen sampling parameters</a>; a fixed step leaves discretization error. The experiments use ellipse/circle losses with globally Lipschitz gradients, distinct from the opening Gibbs examples.</p>
           </div>
           <!-- fixed-ula-experiment:start -->
@@ -560,7 +577,7 @@
         <section class="story-section story-copy" aria-labelledby="two-routes">
           <p class="scene-number" aria-hidden="true">05 / A brief application</p>
           <h2 id="two-routes">Sampling supplies the candidates.</h2>
-          <p>In bilevel learning, θ can represent training-data weights and <i>x</i> a model. Sampling lets us examine different training minimizers using validation loss. <a href="https://arxiv.org/abs/2605.09209">Select-then-differentiate</a> pursues optimistic selection; <a href="https://arxiv.org/abs/2505.05991">SQ-G</a> uses an upper-tail average to approximate pessimistic selection.</p>
+          <p>In bilevel learning, θ can represent training-data weights and <i>x</i> a model. Sampling lets us examine different training minimizers using validation loss. <a href="https://arxiv.org/abs/2605.09209">Select-then-differentiate</a> <a class="reference-link" href="#ref-select-differentiate" aria-label="Reference 4: Select-then-differentiate">[4]</a> pursues optimistic selection; <a href="https://arxiv.org/abs/2505.05991">SQ-G</a> uses an upper-tail average to approximate pessimistic selection.</p>
           <p class="sampling-small">The <a href="../same-training-loss/index.html">previous article</a> explains the data-reweighting application and LLM experiments. Those use practical optimizer branches; this article’s simulations isolate the mathematical sampling problem.</p>
           <details class="sampling-detail" id="toy-models"><summary>The toy losses and what the figures compute</summary>
             <p>The <a href="#fixed-gibbs-experiment">opening Gibbs animation</a> uses wavy and bent loops. A smooth shear of an ellipse defines each loss; its density and limiting law are computed directly. These examples illustrate Gibbs concentration and are not used for the ULA simulations.</p>
@@ -572,8 +589,47 @@
           <p class="story-takeaway">One accuracy target. A sampling prescription for the whole family.</p>
           <p>Under the structural, regularity and tail assumptions, with controlled initialization, common choices of λ, <i>h</i> and <i>n</i> control both approximation errors across θ. This makes sampling useful for minima selection without requiring a parametrization of the solution sets.</p>
           <p><a href="https://arxiv.org/abs/2505.05991">Read the Superquantile–Gibbs paper for the assumptions, guarantees and sampling construction →</a></p>
-          <a class="back-to-blog" href="../index.html">← Research Blog</a>
         </footer>
+
+        <section class="story-copy article-endmatter" aria-labelledby="references">
+          <h2 id="references">References</h2>
+          <ol class="references article-references">
+            <li id="ref-sqg">
+              <span class="reference-authors">Saeed Masiha, Zebang Shen, Negar Kiyavash, and Niao He.</span>
+              <a href="https://arxiv.org/abs/2505.05991v5"><cite>Superquantile-Gibbs Relaxation for Minima-selection in Bilevel Optimization</cite></a>. Preprint, arXiv:2505.05991, 2025 (v5, 2026).
+            </li>
+            <li id="ref-laplace">
+              <span class="reference-authors">Mareike Hasenpflug, Daniel Rudolf, and Björn Sprungk.</span>
+              <a href="https://doi.org/10.1214/23-AAP2040"><cite>Wasserstein convergence rates of increasingly concentrating probability measures</cite></a>. The Annals of Applied Probability 34(3):3320–3347, 2024. <a href="https://arxiv.org/abs/2207.08551">Open preprint</a>.
+            </li>
+            <li id="ref-poincare">
+              <span class="reference-authors">Yun Gong, Niao He, and Zebang Shen.</span>
+              <a href="https://arxiv.org/abs/2501.00429v2"><cite>Poincare Inequality for Local Log-Polyak-Łojasiewicz Measures: Non-asymptotic Analysis in Low-temperature Regime</cite></a>. Preprint, arXiv:2501.00429v2, 2025.
+            </li>
+            <li id="ref-select-differentiate">
+              <span class="reference-authors">Saeed Masiha, Zebang Shen, Negar Kiyavash, and Niao He.</span>
+              <a href="https://arxiv.org/abs/2605.09209"><cite>Select-then-differentiate: Solving Bilevel Optimization with Manifold Lower-level Solution Sets</cite></a>. NeurIPS, 2026.
+            </li>
+          </ol>
+        </section>
+        <section class="story-copy post-citation" aria-labelledby="cite-this-post">
+          <h2 id="cite-this-post">Cite this post</h2>
+          <p>Masiha, S. (2026). <a href="https://smasiha.github.io/writing/sampling-hidden-solutions/"><cite>Sampling from Manifolds of Minimizers</cite></a>. Saeed Masiha’s Research Blog, 18 October 2026.</p>
+          <details>
+            <summary>Show BibTeX</summary>
+            <pre tabindex="0" aria-label="BibTeX citation for this blog post"><code>@misc{masiha2026samplingminimizers,
+  author = {Masiha, Saeed},
+  title = {{Sampling from Manifolds of Minimizers}},
+  year = {2026},
+  month = oct,
+  howpublished = {Saeed Masiha's Research Blog},
+  url = {https://smasiha.github.io/writing/sampling-hidden-solutions/},
+  note = {Published 18 October 2026}
+}</code></pre>
+          </details>
+          <a class="citation-download" href="citation.bib" download="masiha2026samplingminimizers.bib">Download BibTeX (.bib)</a>
+          <p><a class="back-to-blog" href="../index.html">← Research Blog</a></p>
+        </section>
       </article>
     </main>
     <footer class="site-footer"><span>© 2026 Saeed Masiha</span><span>Updated October 2026</span></footer>

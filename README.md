@@ -23,6 +23,7 @@ docs/
   writing/index.html         Research Blog listing with two real articles
   writing/same-training-loss/index.html  Visual explanation of Select-then-differentiate
   writing/sampling-hidden-solutions/index.html  Interactive explanation of manifold sampling
+  writing/*/citation.bib     Downloadable citations for the two blog posts
   about/index.html           Research, background, collaborations, contact
   assets/css/site.css        Shared styles, including article formatting
   assets/css/research-story.css  Blog listing and visual article styles
@@ -37,6 +38,7 @@ docs/
   assets/js/ula-model.js      Seeded numerical model and Euclidean-distance calculation
   assets/js/normal-rise.js    Equal-displacement loss animation
   assets/data/ula-examples.json  Reproducible toy-run snapshots
+  assets/js/article-resources.js  Responsive contents and current-section indication
   assets/js/theme.js         System preference and saved light/dark choice
   assets/js/research-story.js  Minimizer-selection and LLM procedure animations
   assets/data/select-then-differentiate-results.csv  Reported Tables 2–3 results, both math benchmarks
@@ -68,7 +70,7 @@ The navigation contains **Home, Publications, Research Blog, and About**. Home k
 
 All pages share centered navigation and content columns, blue links, Newsreader headings, and Source Sans 3 body text. Light mode uses a white background; dark mode uses a dark slate background and lighter text and links. Main text is 18 px. Home and About use a comfortable 660 px reading column; Publications allows 800 px for long titles and author lists. Home’s circular portrait and name are centered above the introduction, with contact icons centered below the news. Paragraphs retain a natural left edge for reading.
 
-The latest local backup is `design-history/before-sampling-editorial-20261019-181309.zip`. Extract into a **separate folder** to compare or restore. Historical backups, the supplied `Slide__Paths_to_minima_slection/` reference folder, the original combined preview, and `VERIFICATION.md` are preserved locally and excluded from Git because they may contain material that is not ready for public release. The current `docs/` files are the source of truth; editing the combined preview does not change the website.
+The latest local backup is `design-history/before-blog-references-20261020.zip`. Extract into a **separate folder** to compare or restore. Historical backups, the supplied `Slide__Paths_to_minima_slection/` reference folder, the original combined preview, and `VERIFICATION.md` are preserved locally and excluded from Git because they may contain material that is not ready for public release. The current `docs/` files are the source of truth; editing the combined preview does not change the website.
 
 ## Maintain the website
 
@@ -156,6 +158,14 @@ Home links to the complete bibliography and highlights recent papers through bri
 The lower-bounds paper is titled “Sharp First-Order Lower Bounds under α-Polyak-Lojasiewicz Conditions.” The title and accessible paper-link labels use this wording. Keep its existing `sublevel-pl-lower-bounds` anchor stable so incoming links continue to work. `VERIFICATION.md` records the title update and external-link checks.
 
 ## Maintain the Research Blog
+
+Both public articles have a **Contents** navigation, a numbered **References** section, and **Cite this post** with a plain-text citation, a native BibTeX disclosure, and a downloadable `citation.bib`. These blocks are hand-authored in each article, outside all generated figure markers. Figure regeneration preserves them.
+
+The contents list uses existing heading IDs. Keep its links in reading order and add a link when adding a major section. `article-resources.js` opens the list as a sticky left sidebar at viewport widths of 1200 px or more and initially collapses it on smaller screens. Prose stays centered at a maximum width of 660 px, with wider space for figures. Without JavaScript, the native disclosure remains open and all links work. Active-section styling uses `aria-current="location"` and updates on scrolling and disclosure changes; anchor navigation is native, with no animated scrolling. Resizing does not hide keyboard focus. The styling for contents, references and citations is scoped in `research-story.css`.
+
+Use descriptive bibliography IDs such as `ref-sqg` and link numbered in-text citations to them. Preserve direct theorem, assumption and table links. Reference author order, titles, years and publication status should follow the cited version. The selection article credits LoRA and the three named comparator methods; its experimental results are sourced from Select-then-differentiate. The sampling article distinguishes SQ-G, the Laplace/Wasserstein source, the fixed-loss Poincaré source, and Select-then-differentiate.
+
+Blog citations credit **Saeed Masiha**, separately from the research papers’ coauthors. Retain the original publication dates (16 October 2026 and 18 October 2026). When changing an article title or URL, update the readable citation, displayed BibTeX and adjacent `citation.bib` together, along with the page metadata. The BibTeX keys are stable; no DOI is assigned to either blog post. Check the download, native disclosures, contents links, and light/dark layout after edits.
 
 The listing at `docs/writing/index.html` uses two informative SVG figures with visible legends, captions, and accessible descriptions. The selection preview preserves the article’s toy minimizer geometry and the relative illustrative validation scores for A, B, and C. The sampling preview uses all 64 recorded ULA particles from the existing 6,000-step run at λ = 0.06 and h = 0.01, together with the exact solution ellipse. It is a finite toy simulation, not a proof of convergence or an LLM experiment. These listing figures inherit the light/dark theme and move below their article introductions on smaller screens.
 

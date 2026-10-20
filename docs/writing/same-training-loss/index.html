@@ -16,8 +16,9 @@
   <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
   <script src="../../assets/js/theme.js?v=20261016-visual-blog"></script>
   <script defer src="../../assets/js/back-to-top.js?v=20261019-top"></script>
+  <script defer src="../../assets/js/article-resources.js?v=20261020-resources"></script>
   <link rel="stylesheet" href="../../assets/css/site.css?v=20261019-top">
-  <link rel="stylesheet" href="../../assets/css/research-story.css?v=20261019-gd-paths">
+  <link rel="stylesheet" href="../../assets/css/research-story.css?v=20261020-resources">
   <script defer src="../../assets/js/research-story.js?v=20261019-gd-paths"></script>
 </head>
 <body id="top" data-page="research-post">
@@ -46,6 +47,22 @@
           <p class="story-deck">From choosing training solutions to learning data mixtures for LLM fine-tuning.</p>
           <p class="story-byline"><a href="../../about/index.html">Saeed Masiha</a> <span aria-hidden="true">·</span> <time datetime="2026-10-16">16 October 2026</time> <span aria-hidden="true">·</span> 3 min read</p>
         </header>
+        <div class="post-contents">
+          <nav aria-label="Contents">
+            <details data-post-contents open>
+              <summary>Contents</summary>
+              <ol>
+                  <li><a href="#unresolved-choice">The challenge</a></li>
+                  <li><a href="#select-differentiate">Select, then differentiate</a></li>
+                  <li><a href="#method-formulas">The formulation</a></li>
+                  <li><a href="#real-results">What changed in practice?</a></li>
+                  <li><a href="#qwen-data-selection">The learned data mixture</a></li>
+                  <li><a href="#references">References</a></li>
+                  <li><a href="#cite-this-post">Cite this post</a></li>
+              </ol>
+            </details>
+          </nav>
+        </div>
         <div class="story-copy story-opening">
           <p>Which data should an LLM learn from? Answering that question means evaluating the models training produces. But a training objective can leave more than one solution to choose from.</p>
         </div>
@@ -250,8 +267,8 @@
           <div class="story-copy">
             <p class="scene-number" aria-hidden="true">02 / Our template</p>
             <h2 id="select-differentiate">Select, then differentiate.</h2>
-            <p>We propose a <strong>select-then-differentiate</strong> template: first choose a training solution using the objective we ultimately care about, then compute the hypergradient at that selected solution to guide the outer update.</p>
-            <p>For LLM data reweighting, our practical method explores candidate LoRA updates, selects the one with the lowest validation loss, then differentiates through that update to adjust the training-data mixture.</p>
+            <p>We propose a <strong>select-then-differentiate</strong> template <a class="reference-link" href="#ref-select-differentiate" aria-label="Reference 1: Select-then-differentiate">[1]</a>: first choose a training solution using the objective we ultimately care about, then compute the hypergradient at that selected solution to guide the outer update.</p>
+            <p>For LLM data reweighting, our practical method explores candidate LoRA updates <a class="reference-link" href="#ref-lora" aria-label="Reference 2: LoRA">[2]</a>, selects the one with the lowest validation loss, then differentiates through that update to adjust the training-data mixture.</p>
           </div>
           <figure class="story-figure method-figure" id="llm-loop" data-story="method" data-stage="3">
             <div class="figure-heading"><span>Learning which data to emphasize</span><span class="figure-kind">Schematic · Math setup</span></div>
@@ -471,6 +488,7 @@
                   <tr class="result-ours"><th scope="row">HG-MS (ours)</th><td>92.58</td><td>53.32</td></tr>
                 </tbody></table>
               </div>
+              <p>The compared methods include RHO-LOSS <a class="reference-link" href="#ref-rho-loss" aria-label="Reference 3: RHO-LOSS">[3]</a>, LESS <a class="reference-link" href="#ref-less" aria-label="Reference 4: LESS">[4]</a>, and ScaleBiO <a class="reference-link" href="#ref-scalebio" aria-label="Reference 5: ScaleBiO">[5]</a>. All numerical results shown here come from our paper <a class="reference-link" href="#ref-select-differentiate" aria-label="Reference 1: Select-then-differentiate">[1]</a>.</p>
               <p>Each completed run uses a final 20,000-example fine-tuning set and one training epoch, with a common evaluation protocol within each model. These are the paper’s adapted baseline implementations under a single-H100 setup.</p>
               <p>For the iterative methods (ScaleBiO, HG-baseline, and HG-MS), reweighting time is matched within each model: approximately 12 hours for Llama-3-8B, 9 for Qwen-2-7B, and 15 for Gemma-2-9B and Qwen2.5-32B. The noniterative baselines have no outer reweighting horizon. <a href="https://arxiv.org/html/2605.09209v1#A6.SS6">Experimental protocol</a>.</p>
               <p><a href="../../assets/data/select-then-differentiate-results.csv" download>Download both benchmarks (CSV)</a> · <a href="../../assets/images/select-then-differentiate-results.svg" download>Download GSM8K figure (SVG)</a></p>
@@ -574,8 +592,51 @@
           <p class="story-takeaway">When training leaves a choice,<br>selection becomes part of optimization.</p>
           <a class="paper-callout" href="https://arxiv.org/abs/2605.09209">Read the paper <span aria-hidden="true">↗</span></a>
           <p class="paper-credit"><cite>Select-then-differentiate: Solving Bilevel Optimization with Manifold Lower-level Solution Sets</cite><br>Saeed Masiha, Zebang Shen, Negar Kiyavash, and Niao He.</p>
-          <a class="back-to-blog" href="../index.html">← Research Blog</a>
         </footer>
+
+        <section class="story-copy article-endmatter" aria-labelledby="references">
+          <h2 id="references">References</h2>
+          <ol class="references article-references">
+            <li id="ref-select-differentiate">
+              <span class="reference-authors">Saeed Masiha, Zebang Shen, Negar Kiyavash, and Niao He.</span>
+              <a href="https://arxiv.org/abs/2605.09209"><cite>Select-then-differentiate: Solving Bilevel Optimization with Manifold Lower-level Solution Sets</cite></a>. NeurIPS, 2026.
+            </li>
+            <li id="ref-lora">
+              <span class="reference-authors">Edward J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, and Weizhu Chen.</span>
+              <a href="https://arxiv.org/abs/2106.09685"><cite>LoRA: Low-Rank Adaptation of Large Language Models</cite></a>. ICLR, 2022.
+            </li>
+            <li id="ref-rho-loss">
+              <span class="reference-authors">Sören Mindermann, Jan M. Brauner, Muhammed T. Razzak, Mrinank Sharma, Andreas Kirsch, Winnie Xu, Benedikt Höltgen, Aidan N. Gomez, Adrien Morisot, Sebastian Farquhar, and Yarin Gal.</span>
+              <a href="https://proceedings.mlr.press/v162/mindermann22a.html"><cite>Prioritized Training on Points that are Learnable, Worth Learning, and not yet Learnt</cite></a>. ICML, PMLR 162:15630–15649, 2022.
+            </li>
+            <li id="ref-less">
+              <span class="reference-authors">Mengzhou Xia, Sadhika Malladi, Suchin Gururangan, Sanjeev Arora, and Danqi Chen.</span>
+              <a href="https://proceedings.mlr.press/v235/xia24c.html"><cite>LESS: Selecting Influential Data for Targeted Instruction Tuning</cite></a>. ICML, PMLR 235:54104–54132, 2024.
+            </li>
+            <li id="ref-scalebio">
+              <span class="reference-authors">Rui Pan, Dylan Zhang, Hanning Zhang, Xingyuan Pan, Minrui Xu, Jipeng Zhang, Renjie Pi, Xiaoyu Wang, and Tong Zhang.</span>
+              <a href="https://aclanthology.org/2025.acl-long.1543/"><cite>ScaleBiO: Scalable Bilevel Optimization for LLM Data Reweighting</cite></a>. ACL, pp. 31959–31982, 2025.
+            </li>
+          </ol>
+        </section>
+        <section class="story-copy post-citation" aria-labelledby="cite-this-post">
+          <h2 id="cite-this-post">Cite this post</h2>
+          <p>Masiha, S. (2026). <a href="https://smasiha.github.io/writing/same-training-loss/"><cite>Same Training Loss, Different Behavior: Which Solution Should We Choose?</cite></a>. Saeed Masiha’s Research Blog, 16 October 2026.</p>
+          <details>
+            <summary>Show BibTeX</summary>
+            <pre tabindex="0" aria-label="BibTeX citation for this blog post"><code>@misc{masiha2026sametrainingloss,
+  author = {Masiha, Saeed},
+  title = {{Same Training Loss, Different Behavior: Which Solution Should We Choose?}},
+  year = {2026},
+  month = oct,
+  howpublished = {Saeed Masiha's Research Blog},
+  url = {https://smasiha.github.io/writing/same-training-loss/},
+  note = {Published 16 October 2026}
+}</code></pre>
+          </details>
+          <a class="citation-download" href="citation.bib" download="masiha2026sametrainingloss.bib">Download BibTeX (.bib)</a>
+          <p><a class="back-to-blog" href="../index.html">← Research Blog</a></p>
+        </section>
       </article>
     </main>
     <footer class="site-footer"><span>© 2026 Saeed Masiha</span><span>Updated October 2026</span></footer>
