@@ -271,7 +271,7 @@ body[data-page='research-post'] .site-layout { width: min(900px, calc(100% - 80p
 .back-to-blog { display: inline-flex; align-items: center; min-height: 44px; margin-top: 10px; font-size: 1rem; }
 
 /* Article navigation and scholarly end matter. */
-.research-story, .sampling-article { position: relative; }
+.research-story, .sampling-article { position: relative; width: 100%; max-width: 660px; margin-inline: auto; }
 .research-story h3[id], .sampling-article h3[id], .method-formulation[id] { scroll-margin-top: 24px; }
 .post-contents { max-width: 660px; margin: 26px auto; }
 .post-contents nav { color: var(--text); font-size: 1rem; line-height: 1.45; }
